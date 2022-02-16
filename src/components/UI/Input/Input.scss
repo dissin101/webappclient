@@ -1,0 +1,16 @@
+.input {
+  border: 1px solid var(--clr-border);
+  border-radius: 2px;
+  color: var(--clr-grey);
+  outline: none;
+  padding: 17px 16px 14px;
+  width: 100%;
+
+  &:focus {
+    color: var(--clr-black);
+  }
+
+  &:disabled {
+    background: var(--clr-disabled);
+  }
+}

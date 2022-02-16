@@ -1,16 +1,14 @@
 import React from 'react';
-import './assets/styles/bootstrap-grid.css';
-import './assets/styles/normalize.css';
 import './App.scss';
+import Navigation from "./components/Navigation";
 
-const App = () => {
-    return (
-        <div className={'test'}>
-            <div className={'container'}>
-                TEST
-            </div>
+const App = () => (
+    <>
+        <Navigation/>
+        <div className={'container'}>
+
         </div>
-    );
-};
+    </>
+)
 
 export default App;

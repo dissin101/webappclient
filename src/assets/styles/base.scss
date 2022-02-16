@@ -1,0 +1,138 @@
+:root {
+  --clr-background: #FFFFFF;
+  --clr-primary: #1170FF;
+  --clr-on-primary: #FFFFFF;
+  --clr-success: #45BF55;
+  --clr-on-success: #FFFFFF;
+  --clr-danger: #F71A2F;
+  --clr-on-danger: #FFFFFF;
+  --clr-border: #CCCCCC;
+  --clr-grey: #888888;
+  --clr-black: #111111;
+  --clr-disabled: #F6F6F6;
+  --clr-info: #EEF5FF;
+  --clr-white: #FFFFFF;
+}
+
+html {
+  font-family: Inter, sans-serif;
+}
+
+a {
+  color: var(--clr-black);
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+}
+
+.m {
+  &-auto {
+    margin: auto;
+  }
+
+  &-2 {
+    margin: 2px;
+  }
+
+  &-4 {
+    margin: 4px;
+  }
+
+  &-8 {
+    margin: 8px;
+  }
+
+  &-16 {
+    margin: 16px;
+  }
+
+  &-t {
+    &-2 {
+      margin: 2px 0 0 0;
+    }
+
+    &-4 {
+      margin: 4px 0 0 0;
+    }
+
+    &-8 {
+      margin: 8px 0 0 0;
+    }
+
+    &-16 {
+      margin: 16px 0 0 0;
+    }
+
+    &-auto {
+      margin: auto 0 0 0;
+    }
+  }
+
+  &-r {
+    &-2 {
+      margin: 0 2px 0 0;
+    }
+
+    &-4 {
+      margin: 0 4px 0 0;
+    }
+
+    &-8 {
+      margin: 0 8px 0 0;
+    }
+
+    &-16 {
+      margin: 0 16px 0 0;
+    }
+
+    &-auto {
+      margin: 0 auto 0 0;
+    }
+  }
+
+  &-b {
+    &-2 {
+      margin: 0 0 2px 0;
+    }
+
+    &-4 {
+      margin: 0 0 4px 0;
+    }
+
+    &-8 {
+      margin: 0 0 8px 0;
+    }
+
+    &-16 {
+      margin: 0 0 16px 0;
+    }
+
+    &-auto {
+      margin: 0 0 auto 0;
+    }
+  }
+
+  &-l {
+    &-2 {
+      margin: 0 0 0 2px;
+    }
+
+    &-4 {
+      margin: 0 0 0 4px;
+    }
+
+    &-8 {
+      margin: 0 0 0 8px;
+    }
+
+    &-16 {
+      margin: 0 0 0 16px;
+    }
+
+    &-auto {
+      margin: 0 0 0 auto;
+    }
+  }
+}

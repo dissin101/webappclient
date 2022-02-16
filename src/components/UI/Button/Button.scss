@@ -1,0 +1,40 @@
+
+.button {
+  align-items: center;
+  border-radius: 2px;
+  border: none;
+  background: var(--clr-white);
+  cursor: pointer;
+  color: var(--clr-primary);
+  font-weight: 700;
+  padding: 12px;
+  transition: 0.3s all ease;
+
+  &--primary {
+    background: var(--clr-primary);
+    color: var(--clr-on-primary);
+  }
+
+  &--info {
+    background: var(--clr-info);
+    color: var(--clr-primary);
+  }
+
+  &--success {
+    background: var(--clr-success);
+    color: var(--clr-on-success);
+  }
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+
+  &:active {
+    filter: brightness(0.8);
+  }
+
+  &:disabled {
+    color: var(--clr-grey);
+    background: var(--clr-disabled);
+  }
+}
