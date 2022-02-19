@@ -4,6 +4,7 @@
   border-radius: 2px;
   box-shadow: 0 2px 6px rgba(17, 17, 17, 0.07);
   padding: 16px;
+  position: relative;
 
   &__logo {
     color: var(--clr-primary);
@@ -28,20 +29,10 @@
 }
 
 .navigation-list {
-  margin: auto;
-  display: flex;
   list-style: none;
 
   &__item {
     white-space: nowrap;
-
-    &:first-child {
-      margin: 0 12px 0 0;
-    }
-
-    &:last-child {
-      margin: 0 0 0 12px;
-    }
 
     &-link {
       color: var(--clr-grey);
@@ -56,13 +47,36 @@
       }
     }
   }
-
-  &__item:not(:first-child):not(:last-child){
-    margin: 0 12px;
-  }
 }
 
 .buttons-container {
   display: flex;
   justify-content: end;
+}
+
+@media (max-width: 992px) {
+  .navigation-list {
+    margin: 16px 0 0 0;
+    width: 100%;
+
+    &__item {
+      width: 100%;
+
+      &-link {
+        background: var(--clr-background);
+        display: flex;
+        padding: 4px;
+
+        &:hover {
+          color: var(--clr-primary);
+          filter: brightness(0.9);
+        }
+
+        &:active {
+          color: var(--clr-primary);
+          filter: brightness(0.8);
+        }
+      }
+    }
+  }
 }
