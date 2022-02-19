@@ -1,5 +1,6 @@
 :root {
-  --clr-background: #FFFFFF;
+  --clr-background: #F6F6F6;
+  --clr-surface: #FFFFFF;
   --clr-primary: #1170FF;
   --clr-on-primary: #FFFFFF;
   --clr-success: #45BF55;
@@ -16,6 +17,10 @@
 
 html {
   font-family: Inter, sans-serif;
+}
+
+body {
+  background: var(--clr-background);
 }
 
 a {
