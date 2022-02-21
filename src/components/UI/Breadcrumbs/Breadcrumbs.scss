@@ -1,0 +1,40 @@
+.breadcrumbs-container {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  box-shadow: 0 2px 6px rgba(17, 17, 17, 0.07);
+  border-radius: 2px;
+  display: flex;
+  list-style: none;
+  padding: 21px 16px 16px;
+
+  &__item {
+    display: flex;
+    font-size: 1rem;
+    line-height: 1.33;
+    padding: 0 8px 0 0;
+
+    &:not(:first-child)::before{
+      color: var(--clr-grey-light);
+      content: "/";
+      display: block;
+      padding: 0 8px 0 0;
+    }
+
+    &-link {
+      color: var(--clr-grey);
+      transition: 0.2s all ease;
+
+      &--active {
+        color: var(--clr-primary);
+      }
+
+      &:hover {
+        filter: brightness(0.9);
+      }
+
+      &:active {
+        filter: brightness(0.8);
+      }
+    }
+  }
+}
