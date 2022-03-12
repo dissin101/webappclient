@@ -13,7 +13,7 @@ import HomePage from "./components/pages/HomePage";
 const App = () => (
     <>
         <Navigation/>
-        <div className={'m-t-16'}>
+        <div className={'m-t-16 container'}>
             <BrowserRouter>
                 <Routes>
                     <Route

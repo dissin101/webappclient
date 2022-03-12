@@ -39,6 +39,10 @@ ul {
     margin: auto;
   }
 
+  &-0 {
+    margin: 0;
+  }
+
   &-2 {
     margin: 2px;
   }
@@ -56,6 +60,11 @@ ul {
   }
 
   &-t {
+
+    &-0{
+      margin-top: 0;
+    }
+
     &-2 {
       margin-top: 2px;
     }
@@ -78,6 +87,11 @@ ul {
   }
 
   &-r {
+
+    &-0{
+      margin-right: 0;
+    }
+
     &-2 {
       margin-right: 2px;
     }
@@ -100,6 +114,11 @@ ul {
   }
 
   &-b {
+
+    &-0{
+      margin-bottom: 0;
+    }
+
     &-2 {
       margin-bottom: 2px;
     }
@@ -122,6 +141,11 @@ ul {
   }
 
   &-l {
+
+    &-0{
+      margin-left: 0;
+    }
+
     &-2 {
       margin-left: 2px;
     }
@@ -142,4 +166,12 @@ ul {
       margin-left: auto;
     }
   }
+}
+
+.box {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  box-shadow: 0 2px 6px rgba(17, 17, 17, 0.07);
+  border-radius: 2px;
+  padding: 21px 16px 16px;
 }

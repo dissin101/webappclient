@@ -12,10 +12,10 @@ interface BreadcrumbsInterface {
 }
 
 const Breadcrumbs: React.FC<BreadcrumbsInterface> = ({className, links}) => (
-    <ul className={classNames('breadcrumbs-container', className)}>
+    <ul className={classNames('box breadcrumbs-container', className)}>
         {links.map(({title, path}, index) => {
             return(
-                <li className={'breadcrumbs-container__item'}>
+                <li className={'breadcrumbs-container__item'} key={index}>
                     <Link
                         className={
                             classNames(
