@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 import "./Breadcrumbs.scss";
 
-interface BreadcrumbsInterface {
+interface IBreadcrumbs {
     className?: string
     links: {
         title: string
@@ -11,7 +11,7 @@ interface BreadcrumbsInterface {
     }[]
 }
 
-const Breadcrumbs: React.FC<BreadcrumbsInterface> = ({className, links}) => (
+const Breadcrumbs: React.FC<IBreadcrumbs> = ({className, links}) => (
     <ul className={classNames('box breadcrumbs-container', className)}>
         {links.map(({title, path}, index) => {
             return(

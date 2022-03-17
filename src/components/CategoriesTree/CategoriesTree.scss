@@ -1,0 +1,35 @@
+
+.tree-item {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+
+.label {
+  color: var(--clr-primary);
+  font-size: 1rem;
+  line-height: 1.33;
+  margin: 0;
+  user-select: none;
+
+  &--has-node {
+    margin: 0 0 0 24px;
+  }
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+
+  &:active {
+    filter: brightness(0.8);
+  }
+
+  &:focus {
+    filter: brightness(0.7);
+  }
+}
+
+.tree-children {
+  padding: 0 0 0 25px;
+}
