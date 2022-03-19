@@ -7,7 +7,7 @@ import {
     Route,
     Navigate
 } from "react-router-dom";
-import HomePage from "./components/pages/HomePage";
+import Catalog from "./components/pages/Catalog";
 
 
 const App = () => (
@@ -18,7 +18,7 @@ const App = () => (
                 <Routes>
                     <Route
                         path={"/"}
-                        element={<HomePage/>}
+                        element={<Catalog/>}
                     />
                     <Route
                         path="*"

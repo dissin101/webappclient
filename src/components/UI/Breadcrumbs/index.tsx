@@ -22,6 +22,7 @@ const Breadcrumbs: React.FC<IBreadcrumbs> = ({className, links}) => (
                                 'breadcrumbs-container__item-link',
                                 index === links.length - 1 && 'breadcrumbs-container__item-link--active')}
                         to={path}
+                        replace
                     >
                         {title}
                     </Link>

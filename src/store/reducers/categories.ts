@@ -1,16 +1,16 @@
 import * as types from "../constants/categories";
 import {AnyAction} from "redux";
-import {IModel} from "../../models/model";
+import {ICategory} from "../../models/category";
 
 interface IInitialState {
     loading: boolean
-    data: any | null
+    data: ICategory[] | []
     error: string | null
 }
 
 const initialState: IInitialState = {
     loading: false,
-    data: null,
+    data: [],
     error: null
 };
 
@@ -20,7 +20,7 @@ export const categories = (state = initialState, action: AnyAction) => {
             return {
                 ...state,
                 loading: true,
-                data: null,
+                data: [],
                 error: null
             }
         case types.GET_CATEGORIES_SUCCESS:
@@ -34,7 +34,7 @@ export const categories = (state = initialState, action: AnyAction) => {
             return {
                 ...state,
                 loading: false,
-                data: null,
+                data: [],
                 error: action.payload
             }
         default: return state

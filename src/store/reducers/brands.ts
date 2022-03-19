@@ -2,15 +2,15 @@ import * as types from "../constants/brands";
 import {AnyAction} from "redux";
 import {IBrand} from "../../models/brand";
 
-interface initialStateInterface {
+interface IInitialState {
   loading: boolean
-  data: IBrand | null
+  data: IBrand[] | []
   error: string | null
 }
 
-const initialState = {
+const initialState: IInitialState = {
   loading: false,
-  data: null,
+  data: [],
   error: null
 };
 
@@ -20,7 +20,7 @@ export const brands = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         loading: true,
-        data: null,
+        data: [],
         error: null
       }
     case types.GET_BRANDS_SUCCESS:
@@ -34,7 +34,7 @@ export const brands = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         loading: false,
-        data: null,
+        data: [],
         error: action.payload
       }
     default: return state

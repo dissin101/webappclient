@@ -4,13 +4,13 @@ import {IModel} from "../../models/model";
 
 interface IInitialState {
     loading: boolean
-    data: IModel | null
+    data: IModel[] | []
     error: string | null
 }
 
 const initialState: IInitialState = {
     loading: false,
-    data: null,
+    data: [],
     error: null
 };
 
@@ -20,7 +20,7 @@ export const models = (state = initialState, action: AnyAction) => {
             return {
                 ...state,
                 loading: true,
-                data: null,
+                data: [],
                 error: null
             }
         case types.GET_MODELS_SUCCESS:
@@ -34,7 +34,7 @@ export const models = (state = initialState, action: AnyAction) => {
             return {
                 ...state,
                 loading: false,
-                data: null,
+                data: [],
                 error: action.payload
             }
         default: return state
