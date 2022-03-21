@@ -17,7 +17,6 @@ const Catalog: React.FC = () => {
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    /*todo Исправить path состоящий из 2 слов, в хендлерах не добавлять новые хлебные крошки если спускались на уровень ниже*/
     const [breadcrumbs, setBreadcrumbs] = useState([
         {title: 'Главная', path: '#'},
         {title: 'Каталог', path: "/"}
@@ -32,32 +31,43 @@ const Catalog: React.FC = () => {
         loading: state.brands.loading || state.categories.loading || state.models.loading,
     }));
 
+    /**
+     * Получение списка брендов и категорий при инициализации
+     */
+    useEffect(() => {
+        dispatch(getBrands());
+        dispatch(getCategories());
+    }, []);
+
+    /**
+     * Редактирование хлебных крошек в зависимости от выбранной марки/модели авто
+     */
     useEffect(() => {
         const {brand, model} = Object.fromEntries([...searchParams]);
 
-        dispatch(getBrands());
-        dispatch(getCategories());
-
-        let breadcrumbsTemp: {title: string, path: string}[] = [];
+        let breadcrumbsTemp = breadcrumbs.slice(0,2);
 
         if (brand){
-            breadcrumbsTemp = [...breadcrumbsTemp, {
+            breadcrumbsTemp.push({
                 title: brand,
                 path: `?brand=${brand}`
-            }];
+            });
+
+            if (model){
+                breadcrumbsTemp.push({
+                    title: model,
+                    path: `?brand=${brand}&model=${model}`
+                });
+            }
         }
 
-        if (model){
-            breadcrumbsTemp = [...breadcrumbsTemp, {
-                title: model,
-                path: `?brand=${brand}&model=${model}`
-            }];
-        }
+        setBreadcrumbs(breadcrumbsTemp);
 
-        setBreadcrumbs([...breadcrumbs, ...breadcrumbsTemp]);
+    }, [searchParams])
 
-    }, []);
-
+    /**
+     * Получение списка моделей авто в зависимости от марки авто
+     */
     useEffect(() => {
         const {brand} = Object.fromEntries([...searchParams]);
 
@@ -68,6 +78,10 @@ const Catalog: React.FC = () => {
         }
     }, [brands])
 
+    /**
+     * Хендлер клика по карточке бренда
+     * @param brand
+     */
     const onClickBrandHandler = (brand: string) => {
         setBreadcrumbs([...breadcrumbs, {
             title: brand,
@@ -81,6 +95,10 @@ const Catalog: React.FC = () => {
         dispatch(getModels(id));
     }
 
+    /**
+     * Хендлер клика по карточке модели
+     * @param model
+     */
     const onClickModelHandler = (model: string) => {
         const {brand} = Object.fromEntries([...searchParams]);
 
@@ -96,8 +114,15 @@ const Catalog: React.FC = () => {
         dispatch(getCategories());
     }
 
+    /**
+     * Стейт контента в зависиомти от выбранных параметров
+     */
     const [content, setContent] = useState<ReactElement | null>(null);
 
+
+    /**
+     * Запись в стейт контента
+     */
     useEffect(() => {
         const {brand, model} = Object.fromEntries([...searchParams]);
 

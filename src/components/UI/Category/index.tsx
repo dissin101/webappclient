@@ -12,11 +12,11 @@ const Category = ({title, label, img, onClick}: ICategory) => {
 
     return (
         <div className={'category'} onClick={onClick}>
-            <div className={'category__image-container'}>
-                {img &&
-                <img className={'category__image'} src={img}/>
-                }
-            </div>
+            {img && (
+                <div className={'category__image-container'}>
+                    <img className={'category__image'} src={img}/>
+                </div>)
+            }
             <div className={'category__inner'}>
                 <span className={'category__title'}>{title}</span>
                 {label &&
