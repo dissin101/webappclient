@@ -8,7 +8,7 @@ interface ICategory {
     onClick?: () => void
 }
 
-const Category = ({title, label, img, onClick}: ICategory) => {
+const CategoryCard = ({title, label, img, onClick}: ICategory) => {
 
     return (
         <div className={'category'} onClick={onClick}>
@@ -27,4 +27,4 @@ const Category = ({title, label, img, onClick}: ICategory) => {
     )
 };
 
-export default Category;
+export default CategoryCard;

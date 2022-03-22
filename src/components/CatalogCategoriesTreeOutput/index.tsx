@@ -11,7 +11,7 @@ import {ICategory} from "../../models/category";
  * @param onSelectCallback
  * @constructor
  */
-const CategoriesTree = ({list, onSelectCallback}: ICategoriesTree) => {
+const CatalogCategoriesTreeOutput = ({list, onSelectCallback}: ICategoriesTree) => {
 
     const [categories, setCategories] = useState<ICategoryTree[]>([]);
 
@@ -98,7 +98,7 @@ const CategoriesTree = ({list, onSelectCallback}: ICategoriesTree) => {
         )
 
     return (
-        <div className={'col-12 m-t-16'}>
+        <div className={'m-t-16'}>
             <div className={'box'}>
                 {categories.map((branch: ICategoryTree, index: number) => (
                     <div key={index}>{createTree(branch)}</div>
@@ -145,4 +145,4 @@ const TreeItem = ({onSelectCallback, label, children}: ITreeItem) => {
     )
 }
 
-export default CategoriesTree;
+export default CatalogCategoriesTreeOutput;

@@ -1,0 +1,64 @@
+
+.card {
+  border: 1px solid var(--clr-border);
+  box-shadow: 0 2px 6px rgba(17, 17, 17, 0.07);
+  border-radius: 2px;
+  background: var(--clr-surface);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 16px;
+  transition: .3s;
+  width: 100%;
+
+  &__image-wrapper {
+    margin: 0 0 16px 0;
+    padding-top: 66%;
+    position: relative;
+    width: 100%;
+  }
+
+  &__image {
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  &__title {
+    cursor: pointer;
+    color: var(--clr-black);
+    font-size: 1rem;
+    line-height: 1.21;
+    font-weight: 400;
+    margin: 0 0 8px;
+
+    &:hover {
+      color: var(--clr-primary);
+      filter: brightness(0.9);
+    }
+
+    &:active {
+      filter: brightness(0.8);
+    }
+  }
+
+  &__price {
+    color: var(--clr-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0 0 16px;
+  }
+
+  &__button {
+    flex-shrink: 0;
+    margin: 0 0 0 16px;
+  }
+
+
+}

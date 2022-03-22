@@ -1,11 +1,10 @@
-import * as types from "../constants/models";
+import * as types from "../constants/products";
 import {AnyAction} from "redux";
-import {IModel} from "../../models/model";
-import {GET_MODELS_FAILURE} from "../constants/models";
+import {IProduct} from "../../models/product";
 
 interface IInitialState {
     loading: boolean
-    data: IModel[] | []
+    data: IProduct[] | []
     error: string | null
 }
 
@@ -15,23 +14,23 @@ const initialState: IInitialState = {
     error: null
 };
 
-export const models = (state = initialState, action: AnyAction) => {
+export const products = (state = initialState, action: AnyAction) => {
     switch (action.type){
-        case types.GET_MODELS_REQUEST:
+        case types.GET_PRODUCTS_REQUEST:
             return {
                 ...state,
                 loading: true,
                 data: [],
                 error: null
             }
-        case types.GET_MODELS_SUCCESS:
+        case types.GET_PRODUCTS_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 data: action.payload,
                 error: null
             }
-        case types.GET_MODELS_FAILURE:
+        case types.GET_PRODUCTS_ERROR:
             return {
                 ...state,
                 loading: false,

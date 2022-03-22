@@ -3,7 +3,7 @@ import './Button.scss';
 import classNames from "classnames";
 
 interface ButtonInterface {
-    onClick?: () => void
+    onClick?: (arg: any) => void
     type?: 'button' | 'submit'
     disabled?: boolean
     className?: string
