@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import * as types from "../constants/products";
 import {AxiosError} from "axios";
 import {IProductSearchParams} from "../../components/pages/Catalog/interface";
-import {getProductsService} from "../../services/products";
+import {getProductService, getProductsService} from "../../services/products";
 
 export const getProducts = (params: IProductSearchParams, page?: number, count?: number) => {
     return (dispatch: Dispatch) => {
@@ -14,6 +14,19 @@ export const getProducts = (params: IProductSearchParams, page?: number, count?:
             })
             .catch((error: AxiosError) => {
                 dispatch({type: types.GET_PRODUCTS_ERROR, payload: error.response ? error.response.data.message : "Ошибка"})
+            })
+    }
+}
+
+export const getProduct = (id: number) => {
+    return (dispatch: Dispatch) => {
+        dispatch({type: types.GET_PRODUCT_REQUEST});
+        getProductService(id)
+            .then(({data}) => {
+                dispatch({type: types.GET_PRODUCT_SUCCESS, payload: data})
+            })
+            .catch((error: AxiosError) => {
+                dispatch({type: types.GET_PRODUCT_ERROR, payload: error.response ? error.response.data.message : "Ошибка"})
             })
     }
 }

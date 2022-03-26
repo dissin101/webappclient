@@ -34,7 +34,7 @@ const Catalog: React.FC = () => {
         models: state.models.data, modelsError: state.brands.error,
         categories: state.categories.data, categoriesError: state.categories.error,
         products: state.products.data, productsError: state.products.error,
-        loading: state.brands.loading || state.models.loading || state.categories.loading || state.products.error,
+        loading: state.brands.loading || state.models.loading || state.categories.loading || state.products.loading,
     }));
 
     /**
@@ -198,7 +198,6 @@ const Catalog: React.FC = () => {
             return;
         }
 
-        setContent(null);
 
     }, [searchParams , brands, models, categories, products]);
 
@@ -219,10 +218,10 @@ const Catalog: React.FC = () => {
         <>
             <Breadcrumbs links={breadcrumbs}/>
             <div className={'m-t-16'}>
-                <h3 className={'m-0'}>Запчасти</h3>
+                {/*<h3 className={'m-0'}>Запчасти</h3>*/}
                 {!!content ?
                     content :
-                    <div className={'m-t-8'}>Список пуст</div>
+                    <div className={'m-t-8 box'}>Список пуст</div>
                 }
             </div>
         </>

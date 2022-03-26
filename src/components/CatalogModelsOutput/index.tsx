@@ -8,7 +8,7 @@ const CatalogModelsOutput: React.FC<ICatalogModelsOutput> = ({models, onClickMod
         <div className={'row'}>
             {models.map(({id, name}: IModel) => {
                 return (
-                    <div className={'col-12 col-sm-6 col-lg-3 m-t-16 m-b-16'} key={id}>
+                    <div className={'col-12 col-sm-6 col-lg-3'} key={id}>
                         <CategoryCard title={name} onClick={() => onClickModelHandler(name)}/>
                     </div>
                 )

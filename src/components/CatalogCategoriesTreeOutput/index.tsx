@@ -98,13 +98,11 @@ const CatalogCategoriesTreeOutput = ({list, onSelectCallback}: ICategoriesTree) 
         )
 
     return (
-        <div className={'m-t-16'}>
             <div className={'box'}>
                 {categories.map((branch: ICategoryTree, index: number) => (
                     <div key={index}>{createTree(branch)}</div>
                 ))}
             </div>
-        </div>
     )
 }
 

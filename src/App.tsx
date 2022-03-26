@@ -8,6 +8,7 @@ import {
     Navigate
 } from "react-router-dom";
 import Catalog from "./components/pages/Catalog";
+import Product from "./components/pages/Product";
 
 
 const App = () => (
@@ -19,6 +20,10 @@ const App = () => (
                     <Route
                         path={"/"}
                         element={<Catalog/>}
+                    />
+                    <Route
+                        path={"/product/:id"}
+                        element={<Product/>}
                     />
                     <Route
                         path="*"
