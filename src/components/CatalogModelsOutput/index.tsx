@@ -3,6 +3,12 @@ import {IModel} from "../../models/model";
 import CategoryCard from "../CategoryСard";
 import {ICatalogModelsOutput} from "./interface";
 
+/**
+ * Компонент - список моделей товаров
+ * @param models
+ * @param onClickModelHandler
+ * @constructor
+ */
 const CatalogModelsOutput: React.FC<ICatalogModelsOutput> = ({models, onClickModelHandler}) => {
     return (
         <div className={'row'}>

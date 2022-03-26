@@ -1,16 +1,19 @@
 import React from 'react';
 import './Button.scss';
 import classNames from "classnames";
+import {IButton} from "./interface";
 
-interface ButtonInterface {
-    onClick?: (arg: any) => void
-    type?: 'button' | 'submit'
-    disabled?: boolean
-    className?: string
-    color?: 'primary' | 'info' | 'success'
-}
-
-const Button: React.FC<ButtonInterface> = ({children, onClick, type, disabled, className, color}) => {
+/**
+ * Компонент - кнопка
+ * @param children
+ * @param onClick
+ * @param type
+ * @param disabled
+ * @param className
+ * @param color
+ * @constructor
+ */
+const Button: React.FC<IButton> = ({children, onClick, type, disabled, className, color}) => {
     return (
         <button className={classNames(`button`, color && [` button--${color}`], className)}
                 onClick={onClick}

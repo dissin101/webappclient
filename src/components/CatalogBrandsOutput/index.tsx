@@ -3,6 +3,12 @@ import {IBrand} from "../../models/brand";
 import CategoryCard from "../CategoryСard";
 import {ICatalogBrandsOutput} from "./interface";
 
+/**
+ * Компонент - список брендов
+ * @param brands
+ * @param onClickBrandHandler
+ * @constructor
+ */
 const CatalogBrandsOutput: React.FC<ICatalogBrandsOutput> = ({brands, onClickBrandHandler}) => (
     <div className={'row'}>
         {brands.map(({id, name, img}: IBrand) => {

@@ -1,10 +1,10 @@
 import React, {ReactElement, useEffect, useState} from "react";
-import Breadcrumbs from "../../Breadcrumbs";
+import Breadcrumbs from "../../UI/Breadcrumbs";
 import {useDispatch, useSelector} from "react-redux";
 import {getBrands} from "../../../store/actions/brands";
 import {RootState} from "../../../index";
 import {IBrand} from "../../../models/brand";
-import Loader from "../../Loader";
+import Loader from "../../UI/Loader";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {getModels} from "../../../store/actions/models";
 import {getCategories} from "../../../store/actions/categories";
@@ -16,6 +16,10 @@ import CatalogProductsOutput from "../../CatalogProductsOutput";
 import {IModel} from "../../../models/model";
 import {ICategory} from "../../../models/category";
 
+/**
+ * Компонент - страница каталога товаров
+ * @constructor
+ */
 const Catalog: React.FC = () => {
 
     const dispatch = useDispatch();

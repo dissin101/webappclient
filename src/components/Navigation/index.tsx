@@ -4,6 +4,10 @@ import Input from "../UI/Input";
 import Button from "../UI/Button";
 import Icon from "../UI/Icon";
 
+/**
+ * Компонент - навигация
+ * @constructor
+ */
 const Navigation: React.FC = () => {
 
     const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -67,7 +71,7 @@ const Navigation: React.FC = () => {
                         >
                             <>
                                 <Icon name={'add_shopping_cart'}/>
-                                <span className={'d-none d-lg-block m-l-8'}> 0 kzt</span>
+                                <span className={'d-none d-lg-block m-l-8'}> 0 ₸</span>
                             </>
                         </Button>
                         <Button className={'d-block d-lg-none m-l-8'}

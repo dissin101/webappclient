@@ -2,15 +2,14 @@ import React from "react";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import "./Breadcrumbs.scss";
+import {IBreadcrumbs} from "./interface";
 
-interface IBreadcrumbs {
-    className?: string
-    links: {
-        title: string
-        path: string
-    }[]
-}
-
+/**
+ * Компонент - хлебные крошки
+ * @param className
+ * @param links
+ * @constructor
+ */
 const Breadcrumbs: React.FC<IBreadcrumbs> = ({className, links}) => (
     <ul className={classNames('box breadcrumbs-container', className)}>
         {links.map(({title, path}, index) => {

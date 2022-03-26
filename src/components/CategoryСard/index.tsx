@@ -1,14 +1,16 @@
 import React from 'react';
 import './Category.scss';
+import {ICategory} from "./interface";
 
-interface ICategory {
-    title: string
-    label?: string | null
-    img?: string | null
-    onClick?: () => void
-}
-
-const CategoryCard = ({title, label, img, onClick}: ICategory) => {
+/**
+ * Компонент - карточка категорий
+ * @param title
+ * @param label
+ * @param img
+ * @param onClick
+ * @constructor
+ */
+const CategoryCard:React.FC<ICategory> = ({title, label, img, onClick}) => {
 
     return (
         <div className={'category'} onClick={onClick}>

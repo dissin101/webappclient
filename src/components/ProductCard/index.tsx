@@ -6,6 +6,14 @@ import {IProductCard} from "./interface";
 import {currencyFormat} from "../../utils/helpers";
 import {Link} from "react-router-dom";
 
+/**
+ * Компонент - карточка товара
+ * @param id
+ * @param title
+ * @param price
+ * @param img
+ * @constructor
+ */
 const ProductCard: React.FC<IProductCard> = ({id, title, price, img}) => {
 
     const [quantity, setQuantity] = useState(1);

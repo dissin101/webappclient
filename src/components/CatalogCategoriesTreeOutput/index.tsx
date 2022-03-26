@@ -11,7 +11,7 @@ import {ICategory} from "../../models/category";
  * @param onSelectCallback
  * @constructor
  */
-const CatalogCategoriesTreeOutput = ({list, onSelectCallback}: ICategoriesTree) => {
+const CatalogCategoriesTreeOutput: React.FC<ICategoriesTree> = ({list, onSelectCallback}) => {
 
     const [categories, setCategories] = useState<ICategoryTree[]>([]);
 
@@ -113,7 +113,7 @@ const CatalogCategoriesTreeOutput = ({list, onSelectCallback}: ICategoriesTree) 
  * @param children
  * @constructor
  */
-const TreeItem = ({onSelectCallback, label, children}: ITreeItem) => {
+const TreeItem: React.FC<ITreeItem> = ({onSelectCallback, label, children}) => {
 
     const [isOpen, toggleItemOpen] = useState<boolean | null>(null)
 

@@ -3,6 +3,11 @@ import {ICatalogProductsOutput} from "./interface";
 import {IProduct} from "../../models/product";
 import ProductCard from "../ProductCard";
 
+/**
+ * Компонент - список товаров
+ * @param data
+ * @constructor
+ */
 const CatalogProductsOutput: React.FC<ICatalogProductsOutput> = ({data}) => {
 
     return (
