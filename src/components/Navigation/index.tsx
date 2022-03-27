@@ -3,6 +3,7 @@ import './Navigation.scss';
 import Input from "../UI/Input";
 import Button from "../UI/Button";
 import Icon from "../UI/Icon";
+import {useNavigate} from "react-router-dom";
 
 /**
  * Компонент - навигация
@@ -11,6 +12,7 @@ import Icon from "../UI/Icon";
 const Navigation: React.FC = () => {
 
     const [isOpenMenu, setIsOpenMenu] = useState(false);
+    const navigate = useNavigate();
 
     /**
      * Листенер ресайза окна для сброса стейта открытия/скрытия бургер-меню
@@ -29,6 +31,13 @@ const Navigation: React.FC = () => {
     const clickMenuButtonHandler = () => {
         setIsOpenMenu(!isOpenMenu);
     };
+
+    /**
+     * Кнопка корзины
+     */
+    const clickCartButtonHandler = () => {
+        navigate("/cart");
+    }
 
     return (
         <div className={'navigation'}>
@@ -68,10 +77,10 @@ const Navigation: React.FC = () => {
                         </Button>
                         <Button className={'d-none d-md-flex'}
                                 color={'primary'}
+                                onClick={clickCartButtonHandler}
                         >
                             <>
                                 <Icon name={'add_shopping_cart'}/>
-                                <span className={'d-none d-lg-block m-l-8'}> 0 ₸</span>
                             </>
                         </Button>
                         <Button className={'d-block d-lg-none m-l-8'}

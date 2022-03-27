@@ -8,11 +8,21 @@ import classNames from "classnames";
  * @param value
  * @param onChange
  * @param className
+ * @param type
  * @constructor
  */
-const Input: React.FC<IInput> = ({value, onChange, className}) => {
+const Input: React.FC<IInput> = ({
+    value,
+    onChange,
+    className,
+    type= "text"}) => {
     return(
-        <input className={classNames('input input--error', className)} value={value} onChange={onChange}/>
+        <input
+            className={classNames('input input--error', className)}
+            value={value}
+            onChange={onChange}
+            type={type}
+        />
     )
 }
 

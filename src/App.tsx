@@ -9,30 +9,33 @@ import {
 } from "react-router-dom";
 import Catalog from "./components/pages/Catalog";
 import Product from "./components/pages/Product";
+import Cart from './components/pages/Cart';
 
 
 const App = () => (
-    <>
+    <BrowserRouter>
         <Navigation/>
         <div className={'m-t-16 container'}>
-            <BrowserRouter>
-                <Routes>
-                    <Route
-                        path={"/"}
-                        element={<Catalog/>}
-                    />
-                    <Route
-                        path={"/product/:id"}
-                        element={<Product/>}
-                    />
-                    <Route
-                        path="*"
-                        element={<Navigate to="/" />}
-                    />
-                </Routes>
-            </BrowserRouter>
+            <Routes>
+                <Route
+                    path={"/"}
+                    element={<Catalog/>}
+                />
+                <Route
+                    path={"/product/:id"}
+                    element={<Product/>}
+                />
+                <Route
+                    path={"/cart"}
+                    element={<Cart/>}
+                />
+                <Route
+                    path="*"
+                    element={<Navigate to="/" />}
+                />
+            </Routes>
         </div>
-    </>
+    </BrowserRouter>
 );
 
 export default App;

@@ -6,7 +6,7 @@ import {RootState} from "../../../index";
 import Loader from "../../UI/Loader";
 import Breadcrumbs from "../../UI/Breadcrumbs";
 import "./Product.scss";
-import {currencyFormat} from "../../../utils/helpers";
+import {addItemToCart, currencyFormat} from "../../../utils/helpers";
 import Input from "../../UI/Input";
 import Button from "../../UI/Button";
 import {getBrands} from "../../../store/actions/brands";
@@ -30,7 +30,7 @@ const Product: React.FC = () => {
         {title: 'Каталог', path: "/"}
     ]);
 
-    /*todo добавить хендлер добавления в корзину*/
+    /* todo Добавить Notify при добавлении предмета в корзину */
     const [quantity, setQuantity] = useState(1);
 
     /**
@@ -103,7 +103,12 @@ const Product: React.FC = () => {
 
             setBreadcrumbs(_breadcrumbs);
         }
-    }, [product, brands, models, categories])
+    }, [product, brands, models, categories]);
+
+    const addToCartHandler = () => {
+        const {id} = product;
+        addItemToCart(id, quantity);
+    }
 
     if (loading) {
         return (
@@ -120,6 +125,8 @@ const Product: React.FC = () => {
         )
     }
 
+    /* todo добавить состояние для кнопки "В корзину" */
+
     if (product) {
         /*todo для товарной позиции добавить поле с описанием, заменить поле name на title*/
         const {id, name, price, img} = product;
@@ -127,7 +134,7 @@ const Product: React.FC = () => {
         return (
             <>
                 <Breadcrumbs links={breadcrumbs}/>
-                <div className={'product m-t-8'}>
+                <div className={'product m-t-16'}>
                     <div className={'product__info box'}>
                         <div className={'row'}>
                             <div className={'col-12 col-md-6 d-flex'}>
@@ -145,9 +152,14 @@ const Product: React.FC = () => {
                                 </div>
 
                                 <div className={'d-flex m-t-auto'}>
-                                    <Input className={'product__quantity col-3'} value={quantity}/>
+                                    <Input className={'product__quantity col-3'}
+                                           value={quantity}
+                                           type={'number'}
+                                           onChange={(e) => setQuantity(Number(e.target.value))}
+                                    />
                                     <Button className={'product__button m-l-16'}
                                             color={'primary'}
+                                            onClick={addToCartHandler}
                                     >В корзину</Button>
                                 </div>
                             </div>

@@ -3,7 +3,7 @@ import "./ProductCard.scss";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
 import {IProductCard} from "./interface";
-import {currencyFormat} from "../../utils/helpers";
+import {addItemToCart, currencyFormat} from "../../utils/helpers";
 import {Link} from "react-router-dom";
 
 /**
@@ -16,14 +16,14 @@ import {Link} from "react-router-dom";
  */
 const ProductCard: React.FC<IProductCard> = ({id, title, price, img}) => {
 
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setQuantity] = useState<number>(1);
 
-    /*todo добавить хендлер добавления в корзину*/
+    const addToCartHandler = () => {
+        addItemToCart(id, quantity);
+    }
 
     return (
-        <div className={'card'}
-            onClick={() => console.log("BOX")}
-        >
+        <div className={'card'}>
             {img &&
             <div className={'card__image-wrapper'}>
                 <img className={'card__image'} src={img}/>
@@ -32,13 +32,14 @@ const ProductCard: React.FC<IProductCard> = ({id, title, price, img}) => {
             <Link className={'card__title'} to={'/product/' + id}>{title}</Link>
             <div className={'card__price'}>{currencyFormat(price)}</div>
             <div className={'d-flex m-t-auto'}>
-                <Input className={'card__quantity'} value={quantity}/>
+                <Input className={'card__quantity'}
+                       value={quantity}
+                       onChange={(e) => setQuantity(Number(e.target.value))}
+                       type={"number"}
+                />
                 <Button className={'card__button m-l-auto'}
                         color={'primary'}
-                        onClick={(e: any) => {
-                            e.preventDefault()
-                            console.log("button")
-                        }}
+                        onClick={addToCartHandler}
                 >В корзину</Button>
             </div>
         </div>
