@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Loader.module.scss";
+import styles from "./Loader.module.scss";
 import classNames from "classnames";
 import {ILoader} from "./interface";
 
@@ -10,7 +10,7 @@ import {ILoader} from "./interface";
  */
 const Loader: React.FC<ILoader> = ({className}) => {
     return (
-        <div className={classNames('loader', className)}/>
+        <div className={classNames(styles['loader'], className)}/>
     );
 };
 

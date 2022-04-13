@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import Icon from "../UI/Icon";
-import "./CatalogCategoriesTreeOutput.module.scss";
+import styles from "./CatalogCategoriesTreeOutput.module.scss";
 import classNames from "classnames";
 import {ICategoriesTree, ICategoryTree, ITreeItem} from "./interface";
 import {ICategory} from "../../models/category";
@@ -119,7 +119,7 @@ const TreeItem: React.FC<ITreeItem> = ({onSelectCallback, label, children}) => {
 
     return (
         <div>
-            <div className={'tree-item'}
+            <div className={styles['tree-item']}
                  onClick={(e: React.MouseEvent<HTMLInputElement>) => {
                      if (children.length === 0){
                          onSelectCallback(e)
@@ -134,11 +134,11 @@ const TreeItem: React.FC<ITreeItem> = ({onSelectCallback, label, children}) => {
                         :
                         <Icon name={'chevron_right'}/>)}
                 <div
-                    className={classNames('label', children.length === 0 && 'label--has-node')}>
+                    className={classNames(styles['label'], children.length === 0 && styles['label--has-node'])}>
                     {label}
                 </div>
             </div>
-            <div className={'tree-children'}>{isOpen && children}</div>
+            <div className={styles['tree-children']}>{isOpen && children}</div>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './CategoryCard.module.scss';
+import styles from './CategoryCard.module.scss';
 import {ICategory} from "./interface";
 
 /**
@@ -13,16 +13,16 @@ import {ICategory} from "./interface";
 const CategoryCard:React.FC<ICategory> = ({title, label, img, onClick}) => {
 
     return (
-        <div className={'category'} onClick={onClick}>
+        <div className={styles['category']} onClick={onClick}>
             {img && (
-                <div className={'category__image-container'}>
-                    <img className={'category__image'} src={img}/>
+                <div className={styles['category__image-container']}>
+                    <img className={styles['category__image']} src={img}/>
                 </div>)
             }
-            <div className={'category__inner'}>
-                <span className={'category__title'}>{title}</span>
+            <div className={styles['category__inner']}>
+                <span className={styles['category__title']}>{title}</span>
                 {label &&
-                <p className={'category__label'}>{label}</p>
+                <p className={styles['category__label']}>{label}</p>
                 }
             </div>
         </div>

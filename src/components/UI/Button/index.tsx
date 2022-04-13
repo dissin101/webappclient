@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.module.scss';
+import styles from './Button.module.scss';
 import classNames from "classnames";
 import {IButton} from "./interface";
 
@@ -15,7 +15,7 @@ import {IButton} from "./interface";
  */
 const Button: React.FC<IButton> = ({children, onClick, type, disabled, className, color}) => {
     return (
-        <button className={classNames(`button`, color && [` button--${color}`], className)}
+        <button className={classNames(styles[`button`], color && styles[`button--${color}`], className)}
                 onClick={onClick}
                 type={type}
                 disabled={disabled}

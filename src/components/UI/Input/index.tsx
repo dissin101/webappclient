@@ -1,5 +1,5 @@
 import React from "react";
-import './Input.module.scss';
+import styles from './Input.module.scss';
 import {IInput} from "./interface";
 import classNames from "classnames";
 
@@ -18,7 +18,7 @@ const Input: React.FC<IInput> = ({
     type= "text"}) => {
     return(
         <input
-            className={classNames('input input--error', className)}
+            className={classNames(styles['input'], className)}
             value={value}
             onChange={onChange}
             type={type}

@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from "classnames";
 import {IIcon} from "./interface";
+import styles from "./Icon.module.scss";
 
 /**
  * Компонент - иконка
@@ -9,7 +10,7 @@ import {IIcon} from "./interface";
  * @constructor
  */
 const Icon:React.FC<IIcon> = ({name, className}) => (
-    <i className={classNames('icon material-icons', className)}>
+    <i className={classNames(styles['icon'], 'material-icons', className)}>
         {name}
     </i>
 )

@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
-import "./Breadcrumbs.module.scss";
+import styles from "./Breadcrumbs.module.scss";
 import {IBreadcrumbs} from "./interface";
 
 /**
@@ -11,15 +11,15 @@ import {IBreadcrumbs} from "./interface";
  * @constructor
  */
 const Breadcrumbs: React.FC<IBreadcrumbs> = ({className, links}) => (
-    <ul className={classNames('box breadcrumbs-container', className)}>
+    <ul className={classNames(styles['breadcrumbs-container'], 'box', className)}>
         {links.map(({title, path}, index) => {
             return(
-                <li className={'breadcrumbs-container__item'} key={index}>
+                <li className={styles['breadcrumbs-container__item']} key={index}>
                     <Link
                         className={
                             classNames(
-                                'breadcrumbs-container__item-link',
-                                index === links.length - 1 && 'breadcrumbs-container__item-link--active')}
+                                styles['breadcrumbs-container__item-link'],
+                                index === links.length - 1 && styles['breadcrumbs-container__item-link--active'])}
                         to={path}
                         replace
                     >
