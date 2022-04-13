@@ -1,5 +1,5 @@
 import React from 'react';
-import './Category.scss';
+import './CategoryCard.module.scss';
 import {ICategory} from "./interface";
 
 /**

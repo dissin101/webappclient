@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Loader.scss";
+import "./Loader.module.scss";
 import classNames from "classnames";
 import {ILoader} from "./interface";
 

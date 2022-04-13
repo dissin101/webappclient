@@ -1,5 +1,5 @@
 import React from "react";
-import './Input.scss';
+import './Input.module.scss';
 import {IInput} from "./interface";
 import classNames from "classnames";
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.scss';
+import './Button.module.scss';
 import classNames from "classnames";
 import {IButton} from "./interface";
 

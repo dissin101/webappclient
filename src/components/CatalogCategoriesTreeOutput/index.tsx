@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import Icon from "../UI/Icon";
-import "./CategoriesTree.scss";
+import "./CatalogCategoriesTreeOutput.module.scss";
 import classNames from "classnames";
 import {ICategoriesTree, ICategoryTree, ITreeItem} from "./interface";
 import {ICategory} from "../../models/category";
