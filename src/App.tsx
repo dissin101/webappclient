@@ -10,6 +10,7 @@ import {
 import Catalog from "./components/pages/Catalog";
 import Product from "./components/pages/Product";
 import Cart from './components/pages/Cart';
+import Auth from "./components/pages/Auth";
 
 
 const App = () => (
@@ -28,6 +29,10 @@ const App = () => (
                 <Route
                     path={"/cart"}
                     element={<Cart/>}
+                />
+                <Route
+                    path={"/auth"}
+                    element={<Auth/>}
                 />
                 <Route
                     path="*"

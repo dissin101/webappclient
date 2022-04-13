@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import './Navigation.scss';
+import styles from './Navigation.module.scss';
 import Input from "../UI/Input";
 import Button from "../UI/Button";
 import Icon from "../UI/Icon";
 import {useNavigate} from "react-router-dom";
+import classNames from "classnames";
 
 /**
  * Компонент - навигация
@@ -40,28 +41,28 @@ const Navigation: React.FC = () => {
     }
 
     return (
-        <div className={'navigation'}>
+        <div className={styles['navigation']}>
             <div className={'row'}>
                 <div className={'col-10 col-md-3 col-lg-2 d-flex'}>
-                    <a className={'navigation__logo'} href={"/"}>CarPart.kz</a>
+                    <a className={styles['navigation__logo']} href={"/"}>CarPart.kz</a>
                 </div>
                 <div className={'col-md-6 col-lg-8 d-none d-md-flex'}>
                     <div className={'col-md-12 col-lg-6'}>
                         <Input/>
                     </div>
                     <div className={'col-lg-6 d-md-none d-lg-block'}>
-                        <nav className={'navigation__menu'}>
-                            <ul className={'navigation-list d-flex m-t-auto m-b-auto'}>
-                                <li className={'navigation-list__item m-r-16'}>
-                                    <a className={'navigation-list__item-link'}
+                        <nav className={styles['navigation__menu']}>
+                            <ul className={classNames(styles['navigation-list'], 'd-flex m-t-auto m-b-auto')}>
+                                <li className={classNames(styles['navigation-list__item'], 'm-r-16')}>
+                                    <a className={styles['navigation-list__item-link']}
                                        href={'#'}>Доставка</a>
                                 </li>
-                                <li className={'navigation-list__item m-r-16'}>
-                                    <a className={'navigation-list__item-link'}
+                                <li className={classNames(styles['navigation-list__item'], 'm-r-16')}>
+                                    <a className={styles['navigation-list__item-link']}
                                        href={'#'}>Контакты</a>
                                 </li>
-                                <li className={'navigation-list__item'}>
-                                    <a className={'navigation-list__item-link'}
+                                <li className={styles['navigation-list__item']}>
+                                    <a className={styles['navigation-list__item-link']}
                                        href={'#'}>О нас</a>
                                 </li>
                             </ul>
@@ -69,7 +70,7 @@ const Navigation: React.FC = () => {
                     </div>
                 </div>
                 <div className={'col-2 col-md-3 col-lg-2'}>
-                    <div className={'buttons-container'}>
+                    <div className={styles['buttons-container']}>
                         <Button className={'d-none d-md-block m-r-8'}
                                 color={'info'}
                         >
@@ -94,25 +95,25 @@ const Navigation: React.FC = () => {
             </div>
             {
                 isOpenMenu &&
-                <ul className={'navigation-list'}>
-                    <li className={'navigation-list__item d-md-none'}>
-                        <a className={'navigation-list__item-link'}
+                <ul className={styles['navigation-list']}>
+                    <li className={classNames(styles['navigation-list__item'], 'd-md-none')}>
+                        <a className={styles['navigation-list__item-link']}
                            href={'#'}>Профиль</a>
                     </li>
-                    <li className={'navigation-list__item d-md-none'}>
-                        <a className={'navigation-list__item-link'}
+                    <li className={classNames(styles['navigation-list__item'], 'd-md-none')}>
+                        <a className={styles['navigation-list__item-link']}
                            href={'#'}>Корзина</a>
                     </li>
-                    <li className={'navigation-list__item'}>
-                        <a className={'navigation-list__item-link'}
+                    <li className={styles['navigation-list__item']}>
+                        <a className={styles['navigation-list__item-link']}
                            href={'#'}>Доставка</a>
                     </li>
-                    <li className={'navigation-list__item'}>
-                        <a className={'navigation-list__item-link'}
+                    <li className={styles['navigation-list__item']}>
+                        <a className={styles['navigation-list__item-link']}
                            href={'#'}>Контакты</a>
                     </li>
-                    <li className={'navigation-list__item'}>
-                        <a className={'navigation-list__item-link'}
+                    <li className={styles['navigation-list__item']}>
+                        <a className={styles['navigation-list__item-link']}
                            href={'#'}>О нас</a>
                     </li>
                 </ul>

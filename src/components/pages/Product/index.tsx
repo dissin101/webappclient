@@ -5,7 +5,7 @@ import {getProduct} from "../../../store/actions/products";
 import {RootState} from "../../../index";
 import Loader from "../../UI/Loader";
 import Breadcrumbs from "../../UI/Breadcrumbs";
-import "./Product.scss";
+import styles from "./Product.module.scss";
 import {addItemToCart, currencyFormat} from "../../../utils/helpers";
 import Input from "../../UI/Input";
 import Button from "../../UI/Button";
@@ -15,6 +15,7 @@ import {IBrand} from "../../../models/brand";
 import {IModel} from "../../../models/model";
 import {getCategories} from "../../../store/actions/categories";
 import {ICategory} from "../../../models/category";
+import classNames from "classnames";
 
 /**
  * Компонент - страница товара
@@ -134,30 +135,30 @@ const Product: React.FC = () => {
         return (
             <>
                 <Breadcrumbs links={breadcrumbs}/>
-                <div className={'product m-t-16'}>
-                    <div className={'product__info box'}>
+                <div className={classNames(styles['product'], 'm-t-16')}>
+                    <div className={classNames(styles['product__info'],'box')}>
                         <div className={'row'}>
                             <div className={'col-12 col-md-6 d-flex'}>
-                                <div className={'product__image-wrapper m-t-auto m-b-auto'}>
-                                    <img className={'product__image'} src={"/" + img}/>
+                                <div className={classNames(styles['product__image-wrapper'], 'm-t-auto m-b-auto')}>
+                                    <img className={styles['product__image']} src={"/" + img}/>
                                 </div>
                             </div>
                             <div className={'col-12 col-md-6'}>
-                                <h4 className={'product__title'}>{name}</h4>
+                                <h4 className={styles['product__title']}>{name}</h4>
 
-                                <span className={'product__price'}>{currencyFormat(price)}</span>
+                                <span className={styles['product__price']}>{currencyFormat(price)}</span>
 
-                                <div className={'product__description'}>
+                                <div className={styles['product__description']}>
                                     Space for product description. It is mostly used for understanding what product do or about is. This description has heavy impact on the users! Also great for SEO, to boost your store sales.
                                 </div>
 
                                 <div className={'d-flex m-t-auto'}>
-                                    <Input className={'product__quantity col-3'}
+                                    <Input className={classNames(styles['product__quantity'], 'col-3')}
                                            value={quantity}
                                            type={'number'}
                                            onChange={(e) => setQuantity(Number(e.target.value))}
                                     />
-                                    <Button className={'product__button m-l-16'}
+                                    <Button className={classNames(styles['product__button'], 'm-l-16')}
                                             color={'primary'}
                                             onClick={addToCartHandler}
                                     >В корзину</Button>
@@ -166,14 +167,14 @@ const Product: React.FC = () => {
                         </div>
                     </div>
                     <h2 className={'m-t-16 m-b-16'}>Характеристики</h2>
-                    <div className={'product__params box'}>
-                        <div className={'product__params-item row'}>
-                            <div className={'product__params-title col-12 col-md-4'}>Вес</div>
-                            <div className={'product__params-value col-12 col-md-8'}>200гр</div>
+                    <div className={classNames(styles['product__params'], 'box')}>
+                        <div className={classNames('product__params-item', 'row')}>
+                            <div className={classNames(styles['product__params-title'], 'col-12 col-md-4')}>Вес</div>
+                            <div className={classNames(styles['product__params-value'], 'col-12 col-md-8')}>200гр</div>
                         </div>
-                        <div className={'product__params-item row'}>
-                            <div className={'product__params-title col-12 col-md-4'}>Вес</div>
-                            <div className={'product__params-value col-12 col-md-8'}>200гр</div>
+                        <div className={classNames(styles['product__params-item'], 'row')}>
+                            <div className={classNames(styles['product__params-title'], 'col-12 col-md-4')}>Вес</div>
+                            <div className={classNames('product__params-value', 'col-12 col-md-8')}>200гр</div>
                         </div>
                     </div>
                 </div>
