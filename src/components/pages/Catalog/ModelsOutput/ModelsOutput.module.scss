@@ -1,0 +1,31 @@
+.models-wrapper {
+  margin: 8px -4px 0;
+}
+
+.model-wrapper {
+  padding: 0 4px;
+}
+
+.model {
+  align-items: center;
+  border: 1px solid var(--clr-border);
+  box-shadow: 0 2px 6px rgba(17, 17, 17, 0.07);
+  border-radius: 2px;
+  background: var(--clr-surface);
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  justify-content: center;
+  margin: 0 0 8px;
+  min-height: 80px;
+  padding: 16px;
+  transition: .3s;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+
+  &:active {
+    filter: brightness(0.8);
+  }
+}

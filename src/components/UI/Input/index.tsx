@@ -12,17 +12,19 @@ import classNames from "classnames";
  * @constructor
  */
 const Input: React.FC<IInput> = ({
-    value,
-    onChange,
+    label,
     className,
-    type= "text"}) => {
-    return(
-        <input
-            className={classNames(styles['input'], className)}
-            value={value}
-            onChange={onChange}
-            type={type}
-        />
+    name,
+    ...props}) => {
+    return (
+        <div className={styles['input-wrapper']}>
+            {!!label && <label className={styles['label']} htmlFor={name}>{label}</label>}
+            <input
+                className={classNames(styles['input'], className)}
+                id={name}
+                {...props}
+            />
+        </div>
     )
 }
 

@@ -40,6 +40,11 @@ const Navigation: React.FC = () => {
         navigate("/cart");
     }
 
+    const clickPersonButtonHandler = () => {
+        /* todo Добавить прослушивание стейта, если пользователь авторизован, направлять на страницу профиля */
+        navigate("/auth")
+    }
+
     return (
         <div className={styles['navigation']}>
             <div className={'row'}>

@@ -1,9 +1,4 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import Icon from "../UI/Icon";
-import styles from "./CatalogCategoriesTreeOutput.module.scss";
-import classNames from "classnames";
-import {ICategoriesTree, ICategoryTree, ITreeItem} from "./interface";
-import {ICategory} from "../../models/category";
 
 /**
  * Компонент - список категорий товаров
@@ -11,13 +6,20 @@ import {ICategory} from "../../models/category";
  * @param onSelectCallback
  * @constructor
  */
-const CatalogCategoriesTreeOutput: React.FC<ICategoriesTree> = ({list, onSelectCallback}) => {
+
+const CatalogCategoriesTreeOutput = (props: any) => {
+    return(<div>
+        123
+    </div>)
+}
+
+/*const CatalogCategoriesTreeOutput: React.FC<ICategoriesTree> = ({list, onSelectCallback}) => {
 
     const [categories, setCategories] = useState<ICategoryTree[]>([]);
 
-    /**
+    /!**
      * Рекурсивное построение древа категорий
-     */
+     *!/
     const buildTree = (tree: ICategoryTree[], category: ICategory) => {
         tree.forEach((treeItem: ICategoryTree) => {
             for (let prop in treeItem){
@@ -43,9 +45,9 @@ const CatalogCategoriesTreeOutput: React.FC<ICategoriesTree> = ({list, onSelectC
         if (list != null && list.length > 0) {
             let categoriesTree: ICategoryTree[] = [];
 
-            /**
+            /!**
              * Сортировка списка категорий, элементы массива с parentId === null выводятся наверх
-             * */
+             * *!/
             list.sort((category: ICategory) => {
                 if (category.parentId === null){
                     return -1;
@@ -54,9 +56,9 @@ const CatalogCategoriesTreeOutput: React.FC<ICategoriesTree> = ({list, onSelectC
                 }
             })
 
-            /**
+            /!**
              * Построение древа категорий
-             */
+             *!/
             list.forEach((category: ICategory) => {
                 if (category.parentId === null){
                     categoriesTree.push({
@@ -106,13 +108,13 @@ const CatalogCategoriesTreeOutput: React.FC<ICategoriesTree> = ({list, onSelectC
     )
 }
 
-/**
+/!**
  * Компонент - элемент списка категорий
  * @param onSelectCallback
  * @param label
  * @param children
  * @constructor
- */
+ *!/
 const TreeItem: React.FC<ITreeItem> = ({onSelectCallback, label, children}) => {
 
     const [isOpen, toggleItemOpen] = useState<boolean | null>(null)
@@ -141,6 +143,6 @@ const TreeItem: React.FC<ITreeItem> = ({onSelectCallback, label, children}) => {
             <div className={styles['tree-children']}>{isOpen && children}</div>
         </div>
     )
-}
+}*/
 
 export default CatalogCategoriesTreeOutput;

@@ -7,10 +7,13 @@ import {
     Route,
     Navigate
 } from "react-router-dom";
-import Catalog from "./components/pages/Catalog";
 import Product from "./components/pages/Product";
 import Cart from './components/pages/Cart';
 import Auth from "./components/pages/Auth";
+import BrandsOutput from "./components/pages/Catalog/BrandsOutput";
+import ModelsOutput from "./components/pages/Catalog/ModelsOutput";
+import CategoriesOutput from "./components/pages/Catalog/CategoriesOutput";
+import ProductsOutput from "./components/pages/Catalog/ProductsOutput";
 
 
 const App = () => (
@@ -20,7 +23,19 @@ const App = () => (
             <Routes>
                 <Route
                     path={"/"}
-                    element={<Catalog/>}
+                    element={<BrandsOutput/>}
+                />
+                <Route
+                    path={"/models"}
+                    element={<ModelsOutput/>}
+                />
+                <Route
+                    path={"/categories"}
+                    element={<CategoriesOutput/>}
+                />
+                <Route
+                    path={"/products"}
+                    element={<ProductsOutput/>}
                 />
                 <Route
                     path={"/product/:id"}

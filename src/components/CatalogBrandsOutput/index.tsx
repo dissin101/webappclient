@@ -13,7 +13,7 @@ const CatalogBrandsOutput: React.FC<ICatalogBrandsOutput> = ({brands, onClickBra
     <div className={'row'}>
         {brands.map(({id, name, img}: IBrand) => {
             return (
-                <div className={'col-12 col-sm-6 col-lg-3'} key={id}>
+                <div className={'col-12 col-sm-6 col-lg-3 m-b-16'} key={id}>
                     <CategoryCard title={name} img={img} onClick={() => onClickBrandHandler(name)}/>
                 </div>
             )

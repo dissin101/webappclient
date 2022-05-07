@@ -13,7 +13,13 @@ import {IButton} from "./interface";
  * @param color
  * @constructor
  */
-const Button: React.FC<IButton> = ({children, onClick, type, disabled, className, color}) => {
+const Button: React.FC<IButton> = ({
+    children,
+    onClick,
+    type,
+    disabled,
+    className,
+    color}) => {
     return (
         <button className={classNames(styles[`button`], color && styles[`button--${color}`], className)}
                 onClick={onClick}

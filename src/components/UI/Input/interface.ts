@@ -1,8 +1,6 @@
-import {HTMLInputTypeAttribute} from "react";
+import {HTMLInputTypeAttribute, InputHTMLAttributes} from "react";
 
-export interface IInput {
-    value?: string | number
+export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
+    label?: string
     className?: string
-    onChange?: (arg: any) => void
-    type?: HTMLInputTypeAttribute
 }

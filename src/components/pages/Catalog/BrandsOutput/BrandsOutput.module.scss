@@ -1,10 +1,19 @@
-.category {
+.brands-wrapper {
+  margin: 8px -4px;
+}
+
+.brand-wrapper {
+  padding: 0 4px;
+}
+
+.brand {
   border: 1px solid var(--clr-border);
   box-shadow: 0 2px 6px rgba(17, 17, 17, 0.07);
   border-radius: 2px;
   background: var(--clr-surface);
   cursor: pointer;
   display: flex;
+  margin: 0 0 8px;
   min-height: 80px;
   padding: 16px;
   transition: .3s;
@@ -17,7 +26,7 @@
     filter: brightness(0.8);
   }
 
-  &__image-container {
+  &__image-wrapper {
     align-self: center;
     border-radius: 2px;
     overflow: hidden;
@@ -35,7 +44,7 @@
     bottom: 0;
     height: 100%;
     left: 0;
-    object-fit: cover;
+    object-fit: contain;
     position: absolute;
     right: 0;
     top: 0;
@@ -49,24 +58,16 @@
     width: 100%;
   }
 
-  &__title {
+  &__name {
     font-weight: 700;
     font-size: 1rem;
     line-height: 1.5;
     margin: 0;
   }
-
-  &__label {
-    color: var(--clr-grey);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.21;
-    margin: 2px 0 0 0;
-  }
 }
 
-@media (max-width: 576px) {
-  .category {
+@media (max-width: 767px) {
+  .brand {
     margin: 0 0 8px 0;
   }
 }
