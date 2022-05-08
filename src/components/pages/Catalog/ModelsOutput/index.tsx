@@ -77,18 +77,16 @@ const ModelsOutput: React.FC = () => {
 
     return (
         <>
+            <Breadcrumbs links={breadcrumbs}/>
             {models.length > 0 ?
-                <>
-                    <Breadcrumbs links={breadcrumbs}/>
-                    <div className={classNames(styles["models-wrapper"], 'row')}>
-                        {models.map((model: IModel) => (
-                            <div className={classNames(styles['model-wrapper'], 'col-12 col-md-3')} key={model.id}>
-                                <div className={styles['model']}
-                                     onClick={() => onClickModelHandler(model.id)}>{model.name}</div>
-                            </div>
-                        ))}
-                    </div>
-                </>
+                <div className={classNames(styles["models-wrapper"], 'row')}>
+                    {models.map((model: IModel) => (
+                        <div className={classNames(styles['model-wrapper'], 'col-12 col-md-3')} key={model.id}>
+                            <div className={styles['model']}
+                                 onClick={() => onClickModelHandler(model.id)}>{model.name}</div>
+                        </div>
+                    ))}
+                </div>
                 :
                 <div className={'box m-t-8'}>Список моделей пуст</div>
             }

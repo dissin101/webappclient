@@ -35,3 +35,14 @@
     }
   }
 }
+
+@media (max-width: 575px) {
+  .breadcrumbs-container {
+    display: flex;
+    flex-direction: column;
+
+    &__item:not(:first-child)::before{
+      display: none;
+    }
+  }
+}

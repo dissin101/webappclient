@@ -1,8 +1,8 @@
 import { Dispatch } from "redux";
 import * as types from "../constants/products";
 import {AxiosError} from "axios";
-import {IProductSearchParams} from "../../components/pages/Catalog/interface";
 import {getProductService, getProductsService} from "../../services/products";
+import {IProductSearchParams} from "../../components/pages/Catalog/ProductsOutput/interface";
 
 export const getProducts = (params: IProductSearchParams, page?: number, count?: number) => {
     return (dispatch: Dispatch) => {

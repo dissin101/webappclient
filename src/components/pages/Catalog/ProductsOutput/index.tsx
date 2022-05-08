@@ -12,6 +12,10 @@ import {ICategory} from "../../../../models/category";
 import Loader from "../../../UI/Loader";
 import Breadcrumbs from "../../../UI/Breadcrumbs";
 import {getProducts} from "../../../../store/actions/products";
+import ProductCard from "./ProductCard";
+import {IProduct} from "../../../../models/product";
+import classNames from "classnames";
+import styles from "./ProductsOutput.module.scss";
 
 const ProductsOutput: React.FC = () => {
 
@@ -89,7 +93,7 @@ const ProductsOutput: React.FC = () => {
     }, [brands, models, categories]);
 
     useEffect(() => {
-        if (brands.length > 0 && models.length > 0 && categories.length > 0){
+        if (brands.length > 0 && models.length > 0 && categories.length > 0) {
             dispatch(getProducts({brandId, modelId, categoryId}))
         }
     }, [dispatch, brands, models, categories])
@@ -110,8 +114,15 @@ const ProductsOutput: React.FC = () => {
     return (
         <>
             <Breadcrumbs links={breadcrumbs}/>
-            {products.length > 0 ? <>
-            </>: <div className={'box m-t-8'}>Товары в данной категории не найдены</div>
+            {products.length > 0 ?
+                <div className={classNames(styles['products-wrapper'], 'row m-t-8')}>
+                    {products.map(({id, name, price, img}: IProduct) => (
+                        <div className={classNames(styles['product-wrapper'], 'col-12 col-sm-6 col-lg-3 m-b-8')} key={id}>
+                            <ProductCard id={id} title={name} price={price} img={img}/>
+                        </div>
+                    ))}
+                </div>
+                : <div className={'box m-t-8'}>Товары в данной категории не найдены</div>
             }
         </>
     );

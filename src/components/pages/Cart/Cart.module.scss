@@ -1,53 +1,109 @@
+.container {
+  margin: 8px -4px;
+}
+
+.cart-wrapper {
+  padding: 0 4px;
+}
+
+.total-wrapper {
+  padding: 0 4px;
+}
 
 .table {
-  padding: 0;
-
-  &__th {
-    color: var(--clr-grey);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.21;
-    text-align: start;
-  }
-}
-
-.product {
-  display: flex;
-  position: relative;
+  border-collapse: collapse;
   width: 100%;
-  word-break: break-all;
 
-  &__image-wrapper {
-    flex-shrink: 0;
-    height: 80px;
-    margin: 8px 0;
-    width: 96px;
-  }
+  &__head {
+    &-row {
+      border-bottom: 1px solid var(--clr-grey);
+      color: var(--clr-grey);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.21;
+      text-align: left;
+    }
 
-  &__image {
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
-  }
-
-  &__title {
-    color: var(--clr-black);
-    font-size: 1rem;
-    line-height: 1.21;
-    margin: auto 0 auto 8px;
-  }
-}
-
-@media (max-width: 991px) {
-  .table {
-    &__tr {
-      display: flex;
-      flex-direction: column;
-      margin: 0 0 8px 0;
+    &-item {
+      padding: 0 0 8px;
     }
   }
 
-  .total-container {
-    margin: 16px 0 0 0;
+  &__body {
+    &-row {
+      border-bottom: 1px solid var(--clr-grey);
+
+      &:last-child {
+        border: none;
+      }
+    }
+
+    &-item {
+      padding: 16px 0;
+    }
+  }
+}
+
+.image {
+  height: 80px;
+  margin: 0 16px 0 0;
+  object-fit: contain;
+  width: 96px;
+}
+
+.title {
+  color: var(--clr-black);
+  transition: .3s color ease;
+  font-size: 1rem;
+
+  &:hover {
+    color: var(--clr-primary);
+  }
+
+  &:active {
+    color: var(--clr-primary);
+  }
+}
+
+.price {
+  color: var(--clr-primary);
+  font-weight: 700;
+}
+
+.label {
+  margin: 0 8px 0 0;
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .total-wrapper {
+    margin: 8px 0 0 0;
+  }
+
+  .label {
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .table {
+    &__head {
+      display: none;
+    }
+
+    &__body {
+      &-row {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-item {
+        padding: 4px 0;
+      }
+    }
+  }
+
+  .label {
+    display: block;
   }
 }

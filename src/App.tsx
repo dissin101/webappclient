@@ -7,7 +7,7 @@ import {
     Route,
     Navigate
 } from "react-router-dom";
-import Product from "./components/pages/Product";
+import Product from "./components/pages/Catalog/ProductOutput";
 import Cart from './components/pages/Cart';
 import Auth from "./components/pages/Auth";
 import BrandsOutput from "./components/pages/Catalog/BrandsOutput";

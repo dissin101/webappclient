@@ -39,6 +39,7 @@
   }
 
   &__button {
+    height: 100%;
     width: 100%;
   }
 
@@ -60,6 +61,19 @@
 
     &-value {
       color: var(--clr-grey);
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .product {
+    &__title {
+      font-size: 1rem;
+      margin: 16px 0 8px;
+    }
+
+    &__description {
+      margin: 8px 0 16px;
     }
   }
 }

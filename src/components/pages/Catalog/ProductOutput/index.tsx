@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getProduct} from "../../../store/actions/products";
-import {RootState} from "../../../index";
-import Loader from "../../UI/Loader";
-import Breadcrumbs from "../../UI/Breadcrumbs";
+import {getProduct} from "../../../../store/actions/products";
+import {RootState} from "../../../../index";
+import Loader from "../../../UI/Loader";
+import Breadcrumbs from "../../../UI/Breadcrumbs";
 import styles from "./Product.module.scss";
-import {addItemToCart, currencyFormat} from "../../../utils/helpers";
-import Input from "../../UI/Input";
-import Button from "../../UI/Button";
-import {getBrands} from "../../../store/actions/brands";
-import {getModels} from "../../../store/actions/models";
-import {IBrand} from "../../../models/brand";
-import {IModel} from "../../../models/model";
-import {getCategories} from "../../../store/actions/categories";
-import {ICategory} from "../../../models/category";
+import {addItemToCart, currencyFormat} from "../../../../utils/helpers";
+import Input from "../../../UI/Input";
+import Button from "../../../UI/Button";
+import {getBrands} from "../../../../store/actions/brands";
+import {getModels} from "../../../../store/actions/models";
+import {IBrand} from "../../../../models/brand";
+import {IModel} from "../../../../models/model";
+import {getCategories} from "../../../../store/actions/categories";
+import {ICategory} from "../../../../models/category";
 import classNames from "classnames";
 
 /**
@@ -38,7 +38,7 @@ const Product: React.FC = () => {
      * Получение информации о товаре, получение списка брендов и категорий
      */
     useEffect(() => {
-        if (params.id){
+        if (params.id) {
             const id = Number(params.id);
 
             dispatch(getProduct(id));
@@ -48,7 +48,7 @@ const Product: React.FC = () => {
         dispatch(getCategories());
     }, [])
 
-    const { product, loading, error, brands, models, categories } = useSelector((state: RootState) => ({
+    const {product, loading, error, brands, models, categories} = useSelector((state: RootState) => ({
         product: state.product.data,
         loading: state.product.loading || state.brands.loading || state.models.loading || state.categories.loading,
         error: state.product.error,
@@ -61,7 +61,7 @@ const Product: React.FC = () => {
      * Получение списка моделей бренда
      */
     useEffect(() => {
-        if (!!product){
+        if (!!product) {
             dispatch(getModels(product.brandId));
         }
     }, [product])
@@ -71,7 +71,7 @@ const Product: React.FC = () => {
      */
     useEffect(() => {
         if (product) {
-            let _breadcrumbs = breadcrumbs.slice(0,2);
+            let _breadcrumbs = breadcrumbs.slice(0, 2);
             const brand = brands.find((x: IBrand) => x.id === product.brandId);
             const model = models.find((x: IModel) => x.id === product.modelId);
             const category = categories.find((x: ICategory) => x.id === product.categoryId);
@@ -79,19 +79,19 @@ const Product: React.FC = () => {
             if (brand) {
                 _breadcrumbs.push({
                     title: brand.name,
-                    path: `/?brand=${brand.name}`
+                    path: `/models?brand=${brand.id}`
                 });
 
-                if (model){
+                if (model) {
                     _breadcrumbs.push({
                         title: model.name,
-                        path: `/?brand=${brand.name}&model=${model.name}`
+                        path: `/categories?brand=${brand.id}&model=${model.id}`
                     });
 
-                    if (category){
+                    if (category) {
                         _breadcrumbs.push({
                             title: category.name,
-                            path: `/?brand=${brand.name}&model=${model.name}&category=${category.name}`
+                            path: `/products?brand=${brand.id}&model=${model.id}&category=${category.id}`
                         });
                     }
                 }
@@ -120,7 +120,7 @@ const Product: React.FC = () => {
     }
 
     /*todo обработать ошибку*/
-    if (error){
+    if (error) {
         return (
             <div> Ошибка </div>
         )
@@ -135,47 +135,53 @@ const Product: React.FC = () => {
         return (
             <>
                 <Breadcrumbs links={breadcrumbs}/>
-                <div className={classNames(styles['product'], 'm-t-16')}>
-                    <div className={classNames(styles['product__info'],'box')}>
-                        <div className={'row'}>
-                            <div className={'col-12 col-md-6 d-flex'}>
+                <div className={classNames(styles['product'], 'm-t-8')}>
+                    <div className={classNames(styles['product__info'], 'box')}>
+                        <div className={'row justify-content-center justify-content-md-start'}>
+                            <div className={'col-8 col-md-4 d-flex'}>
                                 <div className={classNames(styles['product__image-wrapper'], 'm-t-auto m-b-auto')}>
                                     <img className={styles['product__image']} src={"/" + img}/>
                                 </div>
                             </div>
-                            <div className={'col-12 col-md-6'}>
+                            <div className={'col-12 col-md-8 d-flex flex-column'}>
                                 <h4 className={styles['product__title']}>{name}</h4>
 
                                 <span className={styles['product__price']}>{currencyFormat(price)}</span>
 
                                 <div className={styles['product__description']}>
-                                    Space for product description. It is mostly used for understanding what product do or about is. This description has heavy impact on the users! Also great for SEO, to boost your store sales.
+                                    Space for product description. It is mostly used for understanding what product do
+                                    or about is. This description has heavy impact on the users! Also great for SEO, to
+                                    boost your store sales.
                                 </div>
 
-                                <div className={'d-flex m-t-auto'}>
-                                    <Input className={classNames(styles['product__quantity'], 'col-3')}
-                                           value={quantity}
-                                           type={'number'}
-                                           onChange={(e) => setQuantity(Number(e.target.value))}
-                                    />
-                                    <Button className={classNames(styles['product__button'], 'm-l-16')}
-                                            color={'primary'}
-                                            onClick={addToCartHandler}
-                                    >В корзину</Button>
+                                <div className={'row m-t-auto'}>
+                                    <div className={'col-4'}>
+                                        <Input className={classNames(styles['product__quantity'])}
+                                               value={quantity}
+                                               type={'number'}
+                                               onChange={(e) => setQuantity(Number(e.target.value))}
+                                        />
+                                    </div>
+                                    <div className={'col-8'}>
+                                        <Button className={classNames(styles['product__button'])}
+                                                color={'primary'}
+                                                onClick={addToCartHandler}
+                                        >В корзину</Button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <h2 className={'m-t-16 m-b-16'}>Характеристики</h2>
+                    <h2 className={'m-t-8 m-b-8'}>Характеристики</h2>
                     <div className={classNames(styles['product__params'], 'box')}>
-                        <div className={classNames('product__params-item', 'row')}>
+                        {/*<div className={classNames('product__params-item', 'row')}>
                             <div className={classNames(styles['product__params-title'], 'col-12 col-md-4')}>Вес</div>
                             <div className={classNames(styles['product__params-value'], 'col-12 col-md-8')}>200гр</div>
                         </div>
                         <div className={classNames(styles['product__params-item'], 'row')}>
                             <div className={classNames(styles['product__params-title'], 'col-12 col-md-4')}>Вес</div>
                             <div className={classNames('product__params-value', 'col-12 col-md-8')}>200гр</div>
-                        </div>
+                        </div>*/}
                     </div>
                 </div>
             </>

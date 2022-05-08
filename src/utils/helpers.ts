@@ -37,8 +37,17 @@ export const addItemToCart = (id: number, quantity: number) => {
     }
 }
 
-export const getItemsFromCard = () => {
+export const getItemsFromCart = () => {
     const cart = localStorage.getItem('cart');
 
     return cart ? JSON.parse(cart) : [];
 }
+
+export const removeItemFromCart = (id: number) => {
+    const cart = localStorage.getItem('cart');
+
+    if (cart) {
+        const result = JSON.parse(cart).filter((x:any) => x.id !== id);
+        localStorage.setItem('cart', JSON.stringify(result));
+    }
+};
