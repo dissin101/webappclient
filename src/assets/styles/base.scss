@@ -179,3 +179,11 @@ ul {
 .grey {
   color: var(--clr-grey);
 }
+
+.error-message {
+  color: var(--clr-danger);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.21;
+  margin: 4px 0;
+}

@@ -51,3 +51,17 @@ export const removeItemFromCart = (id: number) => {
         localStorage.setItem('cart', JSON.stringify(result));
     }
 };
+
+export const writeUserToken = (value: string) => {
+    localStorage.setItem('auth', JSON.stringify(value));
+}
+
+export const getUserToken = () => {
+    const token = localStorage.getItem('auth');
+
+    return token ? token.replace(/"/g, '') : null
+}
+
+export const removeUserToken = () => {
+    localStorage.removeItem('auth');
+}

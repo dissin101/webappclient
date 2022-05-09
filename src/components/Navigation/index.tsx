@@ -5,6 +5,8 @@ import Button from "../UI/Button";
 import Icon from "../UI/Icon";
 import {useNavigate} from "react-router-dom";
 import classNames from "classnames";
+import {useSelector} from "react-redux";
+import {RootState} from "../../index";
 
 /**
  * Компонент - навигация
@@ -15,6 +17,8 @@ const Navigation: React.FC = () => {
     const [isOpenMenu, setIsOpenMenu] = useState(false);
     const navigate = useNavigate();
 
+    const isAuth = useSelector((state: RootState) => state.auth.isAuth);
+
     /**
      * Листенер ресайза окна для сброса стейта открытия/скрытия бургер-меню
      */
@@ -24,7 +28,15 @@ const Navigation: React.FC = () => {
                 setIsOpenMenu(!isOpenMenu);
             }
         })
-    });
+    }, []);
+
+    const clickProfileButtonHandler = () => {
+        if (isAuth){
+            navigate("/profile");
+        } else {
+            navigate("/auth");
+        }
+    }
 
     /**
      * Хендлер открытия/скрытия бургер-меню
@@ -78,6 +90,7 @@ const Navigation: React.FC = () => {
                     <div className={styles['buttons-container']}>
                         <Button className={'d-none d-md-block m-r-8'}
                                 color={'info'}
+                                onClick={clickProfileButtonHandler}
                         >
                             <Icon name={'person'}/>
                         </Button>
