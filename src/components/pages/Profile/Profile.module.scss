@@ -1,0 +1,17 @@
+
+.navigation {
+  list-style: none;
+
+  &__item {
+    cursor: pointer;
+    color: var(--clr-grey);
+    font-size: 1rem;
+    line-height: 1.21;
+    margin: 2px 0;
+    transition: .3s color ease;
+
+    &:hover {
+      color: var(--clr-primary);
+    }
+  }
+}
