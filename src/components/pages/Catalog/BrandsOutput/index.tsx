@@ -46,7 +46,7 @@ const BrandsOutput: React.FC = () => {
     if (error){
         /* todo add Plug*/
         return (
-            <div>PLUG</div>
+            <div>Ошибка</div>
         )
     }
 
@@ -58,7 +58,7 @@ const BrandsOutput: React.FC = () => {
                     <div className={classNames(styles['brand-wrapper'], 'col-12 col-md-4')} key={brand.id}>
                         <div className={styles['brand']} onClick={() => onClickBrandHandler(brand.id)}>
                             <div className={styles['brand__image-wrapper']}>
-                                <img className={styles['brand__image']} src={brand.img}/>
+                                <img className={styles['brand__image']} src={brand.img} alt={brand.name}/>
                             </div>
                             <div className={styles['brand__inner']}>
                                 <h3 className={styles['brand__name']}>{brand.name}</h3>
