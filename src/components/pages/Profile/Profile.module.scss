@@ -10,8 +10,32 @@
     margin: 2px 0;
     transition: .3s color ease;
 
-    &:hover {
+    &:hover, &--active {
       color: var(--clr-primary);
+    }
+  }
+}
+
+.content {
+  border-left: 1px solid var(--clr-grey-light);
+}
+
+@media (max-width: 767px) {
+  .content {
+    border-left: none;
+    border-top: 1px solid var(--clr-grey-light);
+    padding-top: 16px;
+  }
+
+  .navigation {
+    &__item {
+      margin: 0 -16px;
+      padding: 0 16px 8px;
+
+      &:not(:first-child) {
+        border-top: 1px solid var(--clr-grey-light);
+        padding: 8px 16px;
+      }
     }
   }
 }
