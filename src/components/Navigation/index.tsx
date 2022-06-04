@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 import classNames from "classnames";
 import {useSelector} from "react-redux";
 import {RootState} from "../../index";
+import {NavLink} from 'react-router-dom';
 
 /**
  * Компонент - навигация
@@ -31,7 +32,7 @@ const Navigation: React.FC = () => {
     }, []);
 
     const clickProfileButtonHandler = () => {
-        if (isAuth){
+        if (isAuth) {
             navigate("/profile");
         } else {
             navigate("/auth");
@@ -52,16 +53,11 @@ const Navigation: React.FC = () => {
         navigate("/cart");
     }
 
-    const clickPersonButtonHandler = () => {
-        /* todo Добавить прослушивание стейта, если пользователь авторизован, направлять на страницу профиля */
-        navigate("/auth")
-    }
-
     return (
         <div className={styles['navigation']}>
             <div className={'row'}>
                 <div className={'col-10 col-md-3 col-lg-2 d-flex'}>
-                    <a className={styles['navigation__logo']} href={"/"}>CarPart.kz</a>
+                    <NavLink className={styles['navigation__logo']} to={"/"}>CarPart.kz</NavLink>
                 </div>
                 <div className={'col-md-6 col-lg-8 d-none d-md-flex'}>
                     <div className={'col-md-12 col-lg-6'}>
@@ -71,16 +67,16 @@ const Navigation: React.FC = () => {
                         <nav className={styles['navigation__menu']}>
                             <ul className={classNames(styles['navigation-list'], 'd-flex m-t-auto m-b-auto')}>
                                 <li className={classNames(styles['navigation-list__item'], 'm-r-16')}>
-                                    <a className={styles['navigation-list__item-link']}
-                                       href={'#'}>Доставка</a>
+                                    <NavLink className={styles['navigation-list__item-link']}
+                                             to={'/delivery'}>Доставка</NavLink>
                                 </li>
                                 <li className={classNames(styles['navigation-list__item'], 'm-r-16')}>
-                                    <a className={styles['navigation-list__item-link']}
-                                       href={'#'}>Контакты</a>
+                                    <NavLink className={styles['navigation-list__item-link']}
+                                             to={'/contacts'}>Контакты</NavLink>
                                 </li>
                                 <li className={styles['navigation-list__item']}>
-                                    <a className={styles['navigation-list__item-link']}
-                                       href={'#'}>О нас</a>
+                                    <NavLink className={styles['navigation-list__item-link']}
+                                             to={'/about'}>О нас</NavLink>
                                 </li>
                             </ul>
                         </nav>
@@ -115,24 +111,29 @@ const Navigation: React.FC = () => {
                 isOpenMenu &&
                 <ul className={styles['navigation-list']}>
                     <li className={classNames(styles['navigation-list__item'], 'd-md-none')}>
-                        <a className={styles['navigation-list__item-link']}
-                           href={'#'}>Профиль</a>
+                        <NavLink className={styles['navigation-list__item-link']}
+                                 onClick={() => setIsOpenMenu(false)}
+                                 to={isAuth ? "/profile" : "/auth"}>Профиль</NavLink>
                     </li>
                     <li className={classNames(styles['navigation-list__item'], 'd-md-none')}>
-                        <a className={styles['navigation-list__item-link']}
-                           href={'#'}>Корзина</a>
+                        <NavLink className={styles['navigation-list__item-link']}
+                                 onClick={() => setIsOpenMenu(false)}
+                                 to={'/cart'}>Корзина</NavLink>
                     </li>
                     <li className={styles['navigation-list__item']}>
-                        <a className={styles['navigation-list__item-link']}
-                           href={'#'}>Доставка</a>
+                        <NavLink className={styles['navigation-list__item-link']}
+                                 onClick={() => setIsOpenMenu(false)}
+                                 to={'/delivery'}>Доставка</NavLink>
                     </li>
                     <li className={styles['navigation-list__item']}>
-                        <a className={styles['navigation-list__item-link']}
-                           href={'#'}>Контакты</a>
+                        <NavLink className={styles['navigation-list__item-link']}
+                                 onClick={() => setIsOpenMenu(false)}
+                                 to={'/contacts'}>Контакты</NavLink>
                     </li>
                     <li className={styles['navigation-list__item']}>
-                        <a className={styles['navigation-list__item-link']}
-                           href={'#'}>О нас</a>
+                        <NavLink className={styles['navigation-list__item-link']}
+                                 onClick={() => setIsOpenMenu(false)}
+                                 to={'/about'}>О нас</NavLink>
                     </li>
                 </ul>
             }

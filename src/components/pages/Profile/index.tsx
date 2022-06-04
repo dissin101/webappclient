@@ -5,7 +5,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import queryString from "query-string";
 import classNames from "classnames";
 import ProfileSettingsOutput from "./ProfileSettingsOutput";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../index";
 
 const Profile = () => {
@@ -14,6 +14,7 @@ const Profile = () => {
     const navigate = useNavigate();
     const queryStringSearch = queryString.parse(location.search);
     const {data} = useSelector((state: RootState) => state.auth);
+    const dispatch = useDispatch();
 
     const [breadcrumbs, setBreadcrumbs] = useState([
         {title: 'Главная', path: '#'},
@@ -65,6 +66,10 @@ const Profile = () => {
                                     </li>
                                 )
                             })}
+                            {/*TODO Add logout handler*/}
+                            <li className={styles['navigation__item']}>
+                                <span onClick={() => {}}>Выход</span>
+                            </li>
                         </ul>
                     </div>
                     <div className={classNames(styles['content'], 'col-12 col-md-8')}>

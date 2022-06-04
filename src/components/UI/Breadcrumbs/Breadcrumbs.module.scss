@@ -41,8 +41,13 @@
     display: flex;
     flex-direction: column;
 
-    &__item:not(:first-child)::before{
-      display: none;
+    &__item {
+
+      border-bottom: 1px ;
+
+      &:not(:first-child)::before{
+        display: none;
+      }
     }
   }
 }

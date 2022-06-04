@@ -180,6 +180,14 @@ ul {
   color: var(--clr-grey);
 }
 
+.primary {
+  color: var(--clr-primary);
+}
+
+.danger {
+  color: var(--clr-danger);
+}
+
 .error-message {
   color: var(--clr-danger);
   font-size: 1rem;

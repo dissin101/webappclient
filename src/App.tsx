@@ -19,6 +19,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {checkUser} from "./store/actions/auth";
 import {RootState} from "./index";
 import Profile from "./components/pages/Profile";
+import Delivery from "./components/pages/Delivery";
+import Contacts from "./components/pages/Contacts";
+import About from "./components/pages/About";
 
 
 const App = () => {
@@ -73,6 +76,18 @@ const App = () => {
                     <Route
                         path={"/auth"}
                         element={<Auth/>}
+                    />
+                    <Route
+                        path={"/delivery"}
+                        element={<Delivery/>}
+                    />
+                    <Route
+                        path={"/contacts"}
+                        element={<Contacts/>}
+                    />
+                    <Route
+                        path={"/about"}
+                        element={<About/>}
                     />
                     <Route
                         path="*"

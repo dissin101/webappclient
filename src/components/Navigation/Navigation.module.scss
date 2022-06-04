@@ -80,3 +80,26 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .navigation {
+    /*padding: 0;*/
+    position: relative;
+
+    &__logo {
+      position: absolute;
+      transform: translate(-65%, -50%);
+      top: 50%;
+      left: 65%;
+    }
+  }
+
+  .navigation-list {
+    margin: 8px 0 0;
+
+    &__item-link {
+      border-top: 1px solid var(--clr-border);
+      padding: 8px 8px;
+    }
+  }
+}
