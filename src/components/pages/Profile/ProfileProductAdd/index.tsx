@@ -9,18 +9,27 @@ import Button from "../../../UI/Button";
 import ProfileBrandAddModal from "./ProfileBrandAddModal";
 import Loader from "../../../UI/Loader";
 import {getBrands} from "../../../../store/actions/brands";
-import {Form, Formik} from 'formik';
+import {Field, Form, Formik} from 'formik';
 import {getModels} from "../../../../store/actions/models";
 import {IModel} from "../../../../models/model";
 import ProfileModelAddModal from "./ProfileModelAddModal";
 import {getCategories} from "../../../../store/actions/categories";
 import {ICategory} from "../../../../models/category";
 import ProfileCategoryAddModal from "./ProfileCategoryAddModal";
+import Input from "../../../UI/Input";
+import {addProduct} from "../../../../store/actions/products";
 
 const ProfileProductAdd = () => {
 
     const initialValues = {
-        brandId: ''
+        brandId: '',
+        modelId: '',
+        categoryId: '',
+        name: '',
+        price: '',
+        description: '',
+        type: '',
+        img: []
     };
 
     const dispatch = useDispatch();
@@ -51,6 +60,7 @@ const ProfileProductAdd = () => {
     const [selectedBrandId, setSelectedBrandId] = useState('');
     const [modelListOptions, setModelListOptions] = useState([]);
     const [selectedModelId, setSelectedModelId] = useState('');
+    const [selectedCategoryId, setSelectedCategoryId] = useState('');
 
     const brandListOptions = brands.map(({id, name}: IBrand) => {
         return {
@@ -67,6 +77,8 @@ const ProfileProductAdd = () => {
         categories.splice(index, 0, currentValue);
         return categories;
     }, []);
+
+    console.log(categories)
 
     const categoriesListOptions = categoriesList.map(({id, parentId, name}: ICategory) => {
         let a = "";
@@ -144,7 +156,9 @@ const ProfileProductAdd = () => {
                 onSubmit={(
                     values
                 ) => {
+                    const form = {...values};
 
+                    dispatch(addProduct(form));
                 }}
             >
                 {({errors, touched, isValid, setFieldValue}) => (
@@ -177,7 +191,7 @@ const ProfileProductAdd = () => {
                                         <Loader className={'m-l-auto m-r-auto'}/>
                                 }
                             </div>
-                            <div className={'col-12 col-md-6 d-flex align-items-center'}>
+                            <div className={'col-12 m-t-8 m-t-md-0 col-md-6 d-flex align-items-center'}>
                                 {
                                     !modelsLoading ?
                                         <>
@@ -205,7 +219,7 @@ const ProfileProductAdd = () => {
                                         <Loader className={'m-l-auto m-r-auto'}/>
                                 }
                             </div>
-                            <div className={'col-12 col-md-6 d-flex align-items-center'}>
+                            <div className={'col-12 col-md-6 m-t-16 d-flex align-items-center'}>
                                 {
                                     !categoriesLoading ?
                                         <>
@@ -215,7 +229,7 @@ const ProfileProductAdd = () => {
                                                 options={categoriesListOptions}
                                                 onChange={(e: any) => {
                                                     setFieldValue("categoryId", e.value)
-                                                    //setSelectedModelId(e.value);
+                                                    setSelectedCategoryId(e.value);
                                                 }}
                                                 isMulti={false}
                                                 placeholder={'Категория'}
@@ -233,6 +247,74 @@ const ProfileProductAdd = () => {
                                         <Loader className={'m-l-auto m-r-auto'}/>
                                 }
                             </div>
+                            {!selectedCategoryId ?
+                                <div className={'col-12'}>
+                                    <h4 className={'danger m-t-8'}>Для добавления товара заполните вышеуказанные поля</h4>
+                                </div> :
+                                <>
+                                    <div className={'col-12 col-md-6 m-t-0'}>
+                                        <Field
+                                            label={'Название товара'}
+                                            name={'name'}
+                                            type={'string'}
+                                            as={Input}
+                                        />
+                                        {(errors.name && touched.name) &&
+                                        <div className={'error-message'}>{errors.name}</div>}
+                                    </div>
+                                    <div className={'col-12 col-md-6 m-t-8'}>
+                                        <Field
+                                            label={'Цена товара'}
+                                            name={'price'}
+                                            type={'number'}
+                                            as={Input}
+                                        />
+                                        {(errors.price && touched.price) &&
+                                        <div className={'error-message'}>{errors.price}</div>}
+                                    </div>
+                                    {/*<div className={'col-12 col-md-6 m-t-8'}>
+                                        <Field
+                                            label={'Тип товара'}
+                                            name={'type'}
+                                            type={'string'}
+                                            as={Input}
+                                        />
+                                        {(errors.type && touched.type) &&
+                                        <div className={'error-message'}>{errors.type}</div>}
+                                    </div>*/}
+                                    <div className={'col-12 col-md-6 m-t-8'}>
+                                        <Field
+                                            label={'Описание товара'}
+                                            name={'description'}
+                                            type={'input'}
+                                            as={Input}
+                                        />
+                                        {(errors.description && touched.description) &&
+                                        <div className={'error-message'}>{errors.description}</div>}
+                                    </div>
+                                    <div className={'col-12 m-t-16'}>
+                                        <input
+                                            id="file"
+                                            name="img"
+                                            type="file"
+                                            onChange={(event) => {
+                                                const files: FileList | null = event.target.files;
+                                                if (files) {
+                                                    let myFiles = Array.from(files);
+                                                    setFieldValue("img", myFiles);
+                                                }
+                                            }}
+                                        />
+                                    </div>
+                                    <Button className={'m-t-16 m-l-auto m-r-auto'}
+                                            type={'submit'}
+                                            color={'primary'}
+                                            disabled={!isValid}
+                                    >
+                                        Добавить
+                                    </Button>
+                                </>
+                            }
                         </div>
                     </Form>
                 )}
