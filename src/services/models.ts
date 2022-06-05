@@ -9,7 +9,6 @@ export const getModelsService = (id: number | null) => {
 export const addModelService = (form: IProfileModelAddForm) => {
     const token = getUserToken();
 
-
     return callApi({
         url: `https://car-part.herokuapp.com/api/model`,
         method: "POST",

@@ -1,7 +1,8 @@
 import {Dispatch} from "redux";
 import * as types from "../constants/categories";
 import {AxiosError} from "axios";
-import {getCategoriesService} from "../../services/categories";
+import {addCategoryService, getCategoriesService} from "../../services/categories";
+import {IProfileCategoryAddForm} from "../../components/pages/Profile/ProfileProductAdd/ProfileCategoryAddModal/interface";
 
 export const getCategories = () => {
     return (dispatch: Dispatch) => {
@@ -15,3 +16,16 @@ export const getCategories = () => {
             })
     }
 }
+
+export const addCategory = (form: IProfileCategoryAddForm) => {
+    return (dispatch: Dispatch) => {
+        dispatch({type: types.ADD_CATEGORY_REQUEST});
+        addCategoryService(form)
+            .then(() => {
+                dispatch({type: types.ADD_CATEGORY_SUCCESS});
+            })
+            .catch((error: AxiosError) => {
+                dispatch({type: types.ADD_CATEGORY_FAILURE, payload: error.response ? error.response.data.message : "Ошибка"})
+            })
+    }
+};
