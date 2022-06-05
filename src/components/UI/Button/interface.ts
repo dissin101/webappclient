@@ -5,4 +5,5 @@ export interface IButton {
     disabled?: boolean
     className?: string
     color?: 'primary' | 'info' | 'success'
+    size?: 'sm' | 'md' | 'lg'
 }

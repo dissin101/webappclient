@@ -7,6 +7,7 @@ import classNames from "classnames";
 import ProfileSettingsOutput from "./ProfileSettingsOutput";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../index";
+import ProfileProductAdd from "./ProfileProductAdd";
 
 const Profile = () => {
 
@@ -76,7 +77,10 @@ const Profile = () => {
                         {Object.keys(queryStringSearch).length !== 0 &&
                         <>
                             {queryStringSearch.module === 'settings' &&
-                            <ProfileSettingsOutput/>
+                                <ProfileSettingsOutput/>
+                            }
+                            {queryStringSearch.module === 'product-add' &&
+                                <ProfileProductAdd/>
                             }
                         </>
                         }

@@ -6,7 +6,6 @@
   cursor: pointer;
   color: var(--clr-primary);
   font-weight: 700;
-  padding: 12px;
   transition: 0.3s all ease;
 
   &--primary {
@@ -22,6 +21,20 @@
   &--success {
     background: var(--clr-success);
     color: var(--clr-on-success);
+  }
+
+  &--size {
+    &-sm {
+      padding: 6px;
+    }
+
+    &-md {
+      padding: 12px;
+    }
+
+    &-lg {
+      padding: 16px;
+    }
   }
 
   &:hover {

@@ -19,9 +19,15 @@ const Button: React.FC<IButton> = ({
     type,
     disabled,
     className,
-    color}) => {
+    color,
+    size = 'md'
+    }) => {
     return (
-        <button className={classNames(styles[`button`], color && styles[`button--${color}`], className)}
+        <button className={
+                    classNames(styles[`button`],
+                    color && styles[`button--${color}`],
+                    styles[`button--size-${size}`],
+                    className)}
                 onClick={onClick}
                 type={type}
                 disabled={disabled}
