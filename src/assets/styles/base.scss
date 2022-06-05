@@ -195,3 +195,17 @@ ul {
   line-height: 1.21;
   margin: 4px 0;
 }
+
+.p {
+  &-l {
+    &-0 {
+      padding-left: 0;
+    }
+  }
+
+  &-r {
+    &-0 {
+      padding-right: 0;
+    }
+  }
+}

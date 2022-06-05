@@ -1,32 +1,33 @@
 import React, {useEffect} from 'react';
+import {IProfileModelAddModal} from "./interface";
 import {Field, Form, Formik} from "formik";
 import Input from "../../../../UI/Input";
 import Button from "../../../../UI/Button";
-import {useDispatch, useSelector} from "react-redux";
-import {addBrand} from "../../../../../store/actions/brands";
-import {RootState} from "../../../../../index";
 import Loader from "../../../../UI/Loader";
-import {IProfileBrandAddModal} from "./interface";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../../../../index";
+import {addModel} from "../../../../../store/actions/models";
 
-const ProfileBrandAddModal: React.FC<IProfileBrandAddModal>  = ({closeHandler}) => {
+const ProfileModelAddModal: React.FC<IProfileModelAddModal> = ({brandId, closeHandler}) => {
 
     const dispatch = useDispatch();
-    const {isBrandAdd, loading, error} = useSelector((state: RootState) => ({
-        loading: state.brands.loading,
-        isBrandAdd: state.brands.isBrandAdd,
-        error: state.brands.error
+
+    const {isModelAdd, loading, error} = useSelector((state: RootState) => ({
+        isModelAdd: state.models.isModelAdd,
+        loading: state.models.loading,
+        error: state.models.error
     }));
 
     const initialValues = {
         name: "",
-        img: []
+        brandId
     };
 
     useEffect(() => {
-        if (isBrandAdd) {
+        if (isModelAdd) {
             closeHandler();
         }
-    }, [isBrandAdd])
+    }, [isModelAdd])
 
     return (
         <Formik
@@ -34,36 +35,26 @@ const ProfileBrandAddModal: React.FC<IProfileBrandAddModal>  = ({closeHandler}) 
             onSubmit={(
                 values
             ) => {
-                dispatch(addBrand(values));
+                const form = {
+                    name: values.name,
+                    brandId
+                };
+
+                dispatch(addModel(form));
             }}
         >
-            {({errors, touched, isValid, setFieldValue}) => (
+            {({errors, touched, isValid}) => (
                 <Form>
                     <div className={'row m-l-0 m-r-0'}>
                         <div className={'col-12'}>
                             <Field
-                                label={'Название бренда'}
+                                label={'Название модели'}
                                 name={'name'}
                                 type={'string'}
                                 as={Input}
                             />
                             {(errors.name && touched.name) &&
                             <div className={'error-message'}>{errors.name}</div>}
-                        </div>
-
-                        <div className={'col-12 m-t-16'}>
-                            <input
-                                id="file"
-                                name="img"
-                                type="file"
-                                onChange={(event) => {
-                                    const files: FileList | null = event.target.files;
-                                    if (files) {
-                                        let myFiles = Array.from(files);
-                                        setFieldValue("img", myFiles);
-                                    }
-                                }}
-                            />
                         </div>
                         {error &&
                         <div className={'col-12 d-flex justify-content-center danger m-t-8'}>
@@ -79,7 +70,7 @@ const ProfileBrandAddModal: React.FC<IProfileBrandAddModal>  = ({closeHandler}) 
                                 >
                                     Добавить
                                 </Button> :
-                                    <Loader className={'m-auto'}/>
+                                <Loader className={'m-auto'}/>
                         }
                     </div>
                 </Form>
@@ -88,4 +79,4 @@ const ProfileBrandAddModal: React.FC<IProfileBrandAddModal>  = ({closeHandler}) 
     );
 };
 
-export default ProfileBrandAddModal;
+export default ProfileModelAddModal;

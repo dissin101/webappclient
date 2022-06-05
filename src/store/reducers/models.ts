@@ -1,15 +1,16 @@
 import * as types from "../constants/models";
 import {AnyAction} from "redux";
 import {IModel} from "../../models/model";
-import {GET_MODELS_FAILURE} from "../constants/models";
 
 interface IInitialState {
+    isModelAdd: boolean
     loading: boolean
     data: IModel[] | []
     error: string | null
 }
 
 const initialState: IInitialState = {
+    isModelAdd: false,
     loading: false,
     data: [],
     error: null
@@ -36,6 +37,27 @@ export const models = (state = initialState, action: AnyAction) => {
                 ...state,
                 loading: false,
                 data: [],
+                error: action.payload
+            }
+        case types.ADD_MODEL_REQUEST:
+            return {
+                ...state,
+                loading: true,
+                isModelAdd: false,
+                error: null
+            }
+        case types.ADD_MODEL_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                isModelAdd: true,
+                error: null
+            }
+        case types.ADD_MODEL_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                isModelAdd: false,
                 error: action.payload
             }
         default: return state
